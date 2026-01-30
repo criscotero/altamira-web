@@ -1,0 +1,1 @@
+Place your Altamira logo SVG/PNG here and import in Navbar.

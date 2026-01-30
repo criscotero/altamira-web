@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "services": "Services",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "caseStudies": "Case Studies"
+  },
+  "cta": {
+    "whatsapp": "WhatsApp",
+    "bookCall": "Book a call",
+    "contactUs": "Contact us"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  },
+  "home": {
+    "headline": "AI & Automation Systems for modern businesses",
+    "subheadline": "We build AI-powered workflows, custom software, and intelligent tools that save time and scale operations."
+  }
+}

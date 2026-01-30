@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "services": "Leistungen",
+    "blog": "Blog",
+    "about": "\u00dcber uns",
+    "contact": "Kontakt",
+    "caseStudies": "Fallstudien"
+  },
+  "cta": {
+    "whatsapp": "WhatsApp",
+    "bookCall": "Call buchen",
+    "contactUs": "Kontakt"
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "home": {
+    "headline": "KI- und Automationssysteme f\u00fcr moderne Unternehmen",
+    "subheadline": "Wir bauen KI-Workflows, individuelle Software und intelligente Tools, die Zeit sparen und skalieren."
+  }
+}

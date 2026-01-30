@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "services": "Services",
+    "blog": "Blog",
+    "about": "\u00c0 propos",
+    "contact": "Contact",
+    "caseStudies": "\u00c9tudes de cas"
+  },
+  "cta": {
+    "whatsapp": "WhatsApp",
+    "bookCall": "R\u00e9server un appel",
+    "contactUs": "Nous contacter"
+  },
+  "footer": {
+    "rights": "Tous droits r\u00e9serv\u00e9s."
+  },
+  "home": {
+    "headline": "Syst\u00e8mes IA & automatisation pour les entreprises modernes",
+    "subheadline": "Nous construisons des workflows IA, des logiciels sur mesure et des outils intelligents pour gagner du temps et passer \u00e0 l\u2019\u00e9chelle."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "services": "Servi\u00e7os",
+    "blog": "Blog",
+    "about": "Sobre",
+    "contact": "Contato",
+    "caseStudies": "Casos"
+  },
+  "cta": {
+    "whatsapp": "WhatsApp",
+    "bookCall": "Agendar call",
+    "contactUs": "Fale conosco"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados."
+  },
+  "home": {
+    "headline": "Sistemas de IA e Automa\u00e7\u00e3o para neg\u00f3cios modernos",
+    "subheadline": "Constru\u00edmos fluxos com IA, software sob medida e ferramentas inteligentes para economizar tempo e escalar opera\u00e7\u00f5es."
+  }
+}
