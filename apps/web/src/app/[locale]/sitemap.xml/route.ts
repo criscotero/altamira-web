@@ -21,6 +21,7 @@ export async function GET(_req: Request, ctx: { params: { locale: string } }) {
     `/${locale}/about`,
     `/${locale}/how-we-work`,
     `/${locale}/use-cases`,
+    `/${locale}/work-with-us`,
     `/${locale}/contact`,
     `/${locale}/blog`,
   ];

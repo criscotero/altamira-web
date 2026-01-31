@@ -4,11 +4,13 @@ import type { Locale } from "@/lib/i18n/locales";
 import { Container } from "./Container";
 import { useTranslations } from "next-intl";
 import { BOOK_CALL_URL, WHATSAPP_URL } from "@/lib/links";
+import { workWithUsCopy, type Locale as WorkLocale } from "@/lib/i18n/workWithUs";
 
 export function Navbar({ locale }: { locale: Locale }) {
   const nav = useTranslations("nav");
   const cta = useTranslations("cta");
   const brand = useTranslations("brand");
+  const workWithUsLabel = workWithUsCopy[locale as WorkLocale]?.nav?.label ?? workWithUsCopy.en.nav.label;
 
   return (
     <header className="border-b border-white/10 bg-[#0B1F33] text-white">
@@ -28,9 +30,10 @@ export function Navbar({ locale }: { locale: Locale }) {
 
           <nav className="hidden gap-6 text-sm md:flex">
             <Link href={`/${locale}/services`} className="text-white/80 hover:text-white">{nav("services")}</Link>
-            <Link href={`/${locale}/blog`} className="text-white/80 hover:text-white">{nav("blog")}</Link>
             <Link href={`/${locale}/about`} className="text-white/80 hover:text-white">{nav("about")}</Link>
+            <Link href={`/${locale}/blog`} className="text-white/80 hover:text-white">{nav("blog")}</Link>
             <Link href={`/${locale}/contact`} className="text-white/80 hover:text-white">{nav("contact")}</Link>
+            <Link href={`/${locale}/work-with-us`} className="text-white/80 hover:text-white">{workWithUsLabel}</Link>
           </nav>
 
           <div className="flex items-center gap-3">
