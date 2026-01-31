@@ -45,8 +45,7 @@ export async function GET(_req: Request, ctx: { params: { locale: string } }) {
   <description>${desc}</description>
 </item>`;
     })
-    .join("
-");
+    .join("\n");
 
   const channelTitle = t("rss.channelTitle", { locale: locale.toUpperCase() });
   const channelLink = `${baseUrl}/${locale}/blog`;

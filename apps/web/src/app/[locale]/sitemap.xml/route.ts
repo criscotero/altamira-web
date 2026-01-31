@@ -52,8 +52,7 @@ ${urls
     <lastmod>${xmlEscape(new Date(u.lastmod).toISOString())}</lastmod>
   </url>`
   )
-  .join("
-")}
+  .join("\n")}
 </urlset>`;
 
   return new NextResponse(body, {

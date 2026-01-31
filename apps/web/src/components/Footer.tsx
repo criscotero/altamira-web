@@ -142,6 +142,7 @@ export function Footer({ locale }: { locale: Locale }) {
               <li><Link href={`/${locale}/services`} className={navLinkClass}>{footer("navigation.services")}</Link></li>
               <li><Link href={`/${locale}/blog`} className={navLinkClass}>{footer("navigation.blog")}</Link></li>
               <li><Link href={`/${locale}/contact`} className={navLinkClass}>{footer("navigation.contact")}</Link></li>
+              <li><Link href={`/${locale}/work-with-us`} className={navLinkClass}>{footer("navigation.workWithUs")}</Link></li>
             </ul>
           </nav>
 

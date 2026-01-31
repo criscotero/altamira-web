@@ -21,6 +21,8 @@ export function WorkWithUsForm({ copy, locale }: { copy: JoinCopy; locale: strin
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const email = "hello@altamiratechlabs.com";
   const emailParts = copy.or.split(email);
+  const fieldClass =
+    "rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-brand-navy shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange/40 focus-visible:border-brand-orange";
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -64,7 +66,7 @@ export function WorkWithUsForm({ copy, locale }: { copy: JoinCopy; locale: strin
         <label className="grid gap-2 text-sm">
           <span className="font-medium">{copy.fields.name}</span>
           <input
-            className="rounded-lg border border-zinc-300 px-3 py-2"
+            className={fieldClass}
             name="name"
             required
             minLength={2}
@@ -75,7 +77,7 @@ export function WorkWithUsForm({ copy, locale }: { copy: JoinCopy; locale: strin
         <label className="grid gap-2 text-sm">
           <span className="font-medium">{copy.fields.email}</span>
           <input
-            className="rounded-lg border border-zinc-300 px-3 py-2"
+            className={fieldClass}
             name="email"
             required
             type="email"
@@ -86,7 +88,7 @@ export function WorkWithUsForm({ copy, locale }: { copy: JoinCopy; locale: strin
         <label className="grid gap-2 text-sm">
           <span className="font-medium">{copy.fields.role}</span>
           <input
-            className="rounded-lg border border-zinc-300 px-3 py-2"
+            className={fieldClass}
             name="role"
             required
             minLength={2}
@@ -97,7 +99,7 @@ export function WorkWithUsForm({ copy, locale }: { copy: JoinCopy; locale: strin
         <label className="grid gap-2 text-sm">
           <span className="font-medium">{copy.fields.profile}</span>
           <input
-            className="rounded-lg border border-zinc-300 px-3 py-2"
+            className={fieldClass}
             name="profile"
             autoComplete="url"
           />
@@ -106,7 +108,7 @@ export function WorkWithUsForm({ copy, locale }: { copy: JoinCopy; locale: strin
         <label className="grid gap-2 text-sm">
           <span className="font-medium">{copy.fields.message}</span>
           <textarea
-            className="rounded-lg border border-zinc-300 px-3 py-2"
+            className={fieldClass}
             name="message"
             rows={5}
             required

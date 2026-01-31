@@ -1,13 +1,29 @@
 {
-  "name": "altamira-web-sanity-starter",
+  "name": "altamira-web-sanity",
   "private": true,
   "workspaces": [
     "apps/*"
   ],
+  "overrides": {
+    "@altamira/web": {
+      "react": "18.3.1",
+      "react-dom": "18.3.1"
+    },
+    "@altamira/studio": {
+      "react": "19.2.4",
+      "react-dom": "19.2.4"
+    }
+  },
   "scripts": {
-    "dev": "npm run dev -w apps/web & npm run dev -w apps/studio",
-    "build": "npm run build -w apps/web && npm run build -w apps/studio",
-    "lint": "npm run lint -w apps/web",
-    "typecheck": "npm run typecheck -w apps/web"
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:studio": "cd apps/studio && npm run dev -- --port 3333",
+    "dev": "npm run dev:web & npm run dev:studio",
+
+    "build:web": "cd apps/web && npm run build",
+    "build:studio": "cd apps/studio && npm run build",
+    "build": "npm run build:web && npm run build:studio",
+
+    "lint": "cd apps/web && npm run lint",
+    "typecheck": "cd apps/web && npm run typecheck"
   }
 }
