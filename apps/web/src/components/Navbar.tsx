@@ -39,7 +39,7 @@ export function Navbar({ locale }: { locale: Locale }) {
           <div className="flex items-center gap-3">
             <a
               href={WHATSAPP_URL}
-              className="rounded-lg bg-emerald-600 px-3 py-2 text-sm font-medium text-white hover:bg-emerald-700"
+              className="inline-flex h-10 items-center justify-center rounded-lg bg-emerald-600 px-4 text-center text-sm font-medium text-white hover:bg-emerald-700"
             >
               {cta("whatsapp")}
             </a>
@@ -47,7 +47,7 @@ export function Navbar({ locale }: { locale: Locale }) {
               href={BOOK_CALL_URL}
               target="_blank"
               rel="noreferrer noopener"
-              className="rounded-lg bg-brand-orange px-3 py-2 text-sm font-medium text-white hover:bg-brand-orange2"
+              className="inline-flex h-10 items-center justify-center rounded-lg bg-brand-orange px-4 text-center text-sm font-medium text-white hover:bg-brand-orange2"
             >
               {cta("bookCall")}
             </a>
