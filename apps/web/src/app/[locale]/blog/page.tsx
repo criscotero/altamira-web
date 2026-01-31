@@ -4,8 +4,8 @@ import { Container } from "@/components/Container";
 import { sanityClient } from "@/lib/sanity/client";
 import { POSTS_BY_LOCALE } from "@/lib/sanity/queries";
 import { isLocale, type Locale, defaultLocale } from "@/lib/i18n/locales";
-import { siteCopy } from "@/content/siteCopy";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { getTranslations } from "next-intl/server";
 
 type Post = {
   _id: string;
@@ -17,18 +17,22 @@ type Post = {
 
 export default async function BlogIndex({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
-  const copy = siteCopy.pages.blog;
+  const t = await getTranslations({ locale, namespace: "pages.blog" });
   const posts: Post[] = await sanityClient.fetch(POSTS_BY_LOCALE, { locale }).catch(() => []);
+
+  const indexIntro = t.raw("indexIntro") as any;
+  const ui = t.raw("ui") as any;
+  const categories = t.raw("categories") as string[];
 
   return (
     <Container>
       <div className="py-12">
-        <h1 className="text-3xl font-semibold tracking-tight text-brand-navy">{copy.pageTitle}</h1>
-        <p className="mt-3 max-w-2xl text-sm text-zinc-600">{copy.indexIntro.subheadline}</p>
+        <h1 className="text-3xl font-semibold tracking-tight text-brand-navy">{t("pageTitle")}</h1>
+        <p className="mt-3 max-w-2xl text-sm text-zinc-600">{indexIntro.subheadline}</p>
         <div className="mt-6 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
-          <h2 className="text-sm font-semibold text-brand-navy">{copy.indexIntro.headline}</h2>
+          <h2 className="text-sm font-semibold text-brand-navy">{indexIntro.headline}</h2>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-            {copy.indexIntro.bullets.map((item) => (
+            {indexIntro.bullets.map((item: string) => (
               <li key={item} className="flex items-start gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                 <span>{item}</span>
@@ -37,19 +41,19 @@ export default async function BlogIndex({ params }: { params: { locale: string }
           </ul>
           <div className="mt-6">
             <Link
-              href={`/${locale}${siteCopy.links.contact}`}
+              href={`/${locale}/contact`}
               className="inline-flex items-center rounded-lg bg-brand-orange px-3 py-2 text-sm font-medium text-white hover:bg-brand-orange2"
             >
-              {copy.indexIntro.cta.label}
+              {indexIntro.cta.label}
             </Link>
-            <p className="mt-2 text-xs text-zinc-600">{copy.indexIntro.cta.microcopy}</p>
+            <p className="mt-2 text-xs text-zinc-600">{indexIntro.cta.microcopy}</p>
           </div>
         </div>
 
         <div className="mt-10">
-          <h2 className="text-sm font-semibold text-brand-navy">{copy.ui.categoriesLabel}</h2>
+          <h2 className="text-sm font-semibold text-brand-navy">{ui.categoriesLabel}</h2>
           <div className="mt-3 flex flex-wrap gap-2 text-xs text-zinc-600">
-            {copy.categories.map((category) => (
+            {categories.map((category) => (
               <span key={category} className="rounded-full border border-zinc-200 bg-white px-3 py-1">
                 {category}
               </span>
@@ -60,7 +64,7 @@ export default async function BlogIndex({ params }: { params: { locale: string }
         <div className="mt-10 grid gap-6">
           {posts.length === 0 ? (
             <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 text-sm text-zinc-600">
-              {copy.ui.emptyState}
+              {ui.emptyState}
             </div>
           ) : (
             posts.map((p) => (
@@ -82,11 +86,13 @@ export default async function BlogIndex({ params }: { params: { locale: string }
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
-  const meta = siteCopy.pages.blog.meta;
+  const t = await getTranslations({ locale });
+
   return buildMetadata({
-    title: meta.title,
-    description: meta.description,
-    path: `/${locale}${siteCopy.links.blog}`,
+    title: t("pages.blog.meta.title"),
+    description: t("pages.blog.meta.description"),
+    path: `/${locale}/blog`,
     locale,
+    siteName: t("brand.name"),
   });
 }

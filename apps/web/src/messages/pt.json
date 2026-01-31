@@ -1,21 +1,933 @@
 {
+  "brand": {
+    "name": "Altamira Tech Labs",
+    "tagline": "Construímos sistemas inteligentes que substituem fricção por automação.",
+    "shortDescription": "Consultoria boutique de AI e automação que projeta sistemas inteligentes para otimizar operações, transformar dados em insights e ajudar equipes a escalar.",
+    "positioningLine": "Sistemas inteligentes para alavancagem operacional e escala."
+  },
   "nav": {
-    "services": "Servi\u00e7os",
+    "home": "Início",
+    "services": "Serviços",
     "blog": "Blog",
     "about": "Sobre",
     "contact": "Contato",
-    "caseStudies": "Casos"
+    "howWeWork": "Como trabalhamos",
+    "useCases": "Casos de uso"
   },
   "cta": {
     "whatsapp": "WhatsApp",
-    "bookCall": "Agendar call",
+    "bookCall": "Agendar uma chamada",
     "contactUs": "Fale conosco"
   },
   "footer": {
-    "rights": "Todos os direitos reservados."
+    "navigationTitle": "Navegação",
+    "servicesTitle": "Serviços",
+    "contactTitle": "Contato",
+    "navigation": {
+      "home": "Início",
+      "about": "Sobre",
+      "services": "Serviços",
+      "blog": "Blog",
+      "contact": "Contato"
+    },
+    "services": {
+      "customSoftware": "Software sob medida",
+      "aiAutomation": "AI e automação",
+      "webMobile": "Web e mobile",
+      "integrations": "Integrações e APIs",
+      "cloudDevops": "Cloud e DevOps"
+    },
+    "contact": {
+      "phoneLabel": "Telefone / WhatsApp",
+      "phones": ["+1 302-595-7259", "+57 315-070-5119"],
+      "address": [
+        "Altamira Tech Labs",
+        "123 Main St, Suite 456",
+        "Dover, DE 19901",
+        "USA"
+      ],
+      "linkedinLabel": "LinkedIn",
+      "emailLabel": "Email"
+    },
+    "rights": "Todos os direitos reservados.",
+    "localeLinks": [
+      { "code": "en", "label": "EN", "flag": "🇺🇸" },
+      { "code": "es", "label": "ES", "flag": "🇪🇸" },
+      { "code": "pt", "label": "PT", "flag": "🇧🇷" },
+      { "code": "fr", "label": "FR", "flag": "🇫🇷" },
+      { "code": "de", "label": "DE", "flag": "🇩🇪" }
+    ]
   },
-  "home": {
-    "headline": "Sistemas de IA e Automa\u00e7\u00e3o para neg\u00f3cios modernos",
-    "subheadline": "Constru\u00edmos fluxos com IA, software sob medida e ferramentas inteligentes para economizar tempo e escalar opera\u00e7\u00f5es."
+  "contactForm": {
+    "fields": {
+      "name": "Nome",
+      "email": "Email",
+      "company": "Empresa (opcional)",
+      "interest": "Interesse (opcional)",
+      "message": "Mensagem"
+    },
+    "submit": "Enviar mensagem",
+    "status": {
+      "sending": "Enviando...",
+      "success": "Mensagem enviada. Responderemos em breve.",
+      "error": "Erro ao enviar mensagem: {error}"
+    }
+  },
+  "pages": {
+    "home": {
+      "meta": {
+        "title": "Altamira Tech Labs | Automação inteligente e software sob medida",
+        "description": "Altamira Tech Labs projeta workflows inteligentes, sistemas de dados e software sob medida que automatizam operações e ajudam equipes a escalar com clareza."
+      },
+      "hero": {
+        "headline": "Construa sistemas inteligentes. Automatize o que te desacelera.",
+        "subheadline": "Altamira Tech Labs é uma consultoria de software e AI que ajuda empresas a automatizar operações, transformar dados em insight e escalar com confiança.",
+        "bullets": [
+          "Automação de workflows que elimina trabalho repetitivo",
+          "Sistemas de dados e dashboards que aceleram decisões",
+          "Plataformas sob medida pensadas para escala"
+        ],
+        "deliverablesCard": {
+          "headline": "O que entregamos",
+          "bullets": [
+            "Roadmaps de automação e arquitetura de sistemas",
+            "Workflows, dashboards e APIs prontos para produção",
+            "Documentação, handover e manutenibilidade"
+          ],
+          "linkLabel": "Ver serviços"
+        },
+        "cta": {
+          "label": "Agendar uma chamada",
+          "microcopy": "Conte sobre suas operações e os resultados que precisa.",
+          "variant": "primary"
+        }
+      },
+      "credibility": {
+        "headline": "Credibilidade sem hype",
+        "subheadline": "Entrega liderada pelo fundador, resultados medidos e escopo transparente.",
+        "bullets": [
+          "Nome do cliente (confidencial)",
+          "Estudo de caso (em andamento)",
+          "Entrega remota para equipes nos EUA e LATAM",
+          "Consultoria de engenharia com marcos claros"
+        ],
+        "cta": {
+          "label": "Veja como trabalhamos",
+          "microcopy": "Processo em cinco etapas com clareza e responsabilidade.",
+          "variant": "secondary"
+        }
+      },
+      "problem": {
+        "headline": "Operações manuais não escalam",
+        "subheadline": "A maioria das equipes é limitada por ferramentas fragmentadas, responsabilidades difusas e processos que dependem de heroísmo.",
+        "bullets": [
+          "Trabalho manual repetitivo consome tempo de alto valor",
+          "Dados ficam em planilhas e sistemas desconectados",
+          "Handoffs geram erros e atrasos",
+          "Lideranças não têm visibilidade em tempo real"
+        ],
+        "successCard": {
+          "headline": "Como é o sucesso",
+          "bullets": [
+            "Ownership claro em cada workflow",
+            "Menos handoffs e erros",
+            "Visibilidade operacional em tempo real",
+            "Sistemas que escalam sem caos"
+          ]
+        },
+        "cta": {
+          "label": "Fale sobre seus gargalos",
+          "microcopy": "Mapearemos os ganhos de maior impacto em uma breve chamada.",
+          "variant": "secondary"
+        }
+      },
+      "pillars": {
+        "headline": "Quatro pilares de entrega",
+        "subheadline": "Cada engagement combina estratégia e execução de alta qualidade.",
+        "cards": [
+          {
+            "title": "Estratégia e design de sistemas",
+            "description": "Roadmaps de automação, arquitetura e redesenho de processos."
+          },
+          {
+            "title": "Hiperautomação e sistemas de AI",
+            "description": "Orquestração de workflows, agentes de AI e inteligência de dados."
+          },
+          {
+            "title": "Software sob medida e SaaS",
+            "description": "Ferramentas internas, APIs e plataformas cloud-native."
+          },
+          {
+            "title": "Cloud, DevOps e MLOps",
+            "description": "Infraestrutura confiável, CI/CD e AI em produção."
+          }
+        ],
+        "cta": {
+          "label": "Explorar serviços",
+          "microcopy": "Veja o escopo completo e os entregáveis que fornecemos.",
+          "variant": "primary"
+        }
+      },
+      "servicesHighlights": {
+        "headline": "Ofertas de serviço productizadas",
+        "subheadline": "Escopos claros para necessidades comuns, feitos para impacto rápido.",
+        "cards": [
+          {
+            "title": "Automation Sprint (2 semanas)",
+            "description": "Identifique quick wins e entregue uma automação funcional.",
+            "bullets": ["Mapa de processo e escopo", "Workflow protótipo", "Plano de handover"]
+          },
+          {
+            "title": "Ops Intelligence Dashboard",
+            "description": "Métricas unificadas e visibilidade operacional.",
+            "bullets": ["Pipelines de dados", "Dashboard de KPIs", "Relatórios prontos para decisão"]
+          },
+          {
+            "title": "Custom AI Agent (Piloto)",
+            "description": "Copilotos internos para conhecimento, operações ou suporte.",
+            "bullets": ["Desenho do caso de uso", "Workflow LLM", "Segurança e avaliação"]
+          },
+          {
+            "title": "MVP Build (8-12 semanas)",
+            "description": "MVP pronto para produção e escalável.",
+            "bullets": ["Arquitetura e roadmap", "Build core", "Suporte ao lançamento"]
+          },
+          {
+            "title": "Automation Retainer (mensal)",
+            "description": "Automação contínua e melhoria de processos.",
+            "bullets": ["Roadmap mensal", "Entrega de workflows", "Otimização contínua"]
+          }
+        ],
+        "cta": {
+          "label": "Ver abordagem de pricing",
+          "microcopy": "Precificamos por escopo e resultados, não por horas.",
+          "variant": "secondary"
+        }
+      },
+      "howItWorks": {
+        "headline": "Como trabalhamos",
+        "subheadline": "Um processo com marcos pensado para clareza e velocidade.",
+        "steps": [
+          {
+            "title": "Descobrir",
+            "description": "Alinhar objetivos, restrições e realidade operacional.",
+            "deliverables": ["Mapa de processos", "Avaliação de oportunidades", "Escopo inicial"]
+          },
+          {
+            "title": "Desenhar",
+            "description": "Arquitetar o sistema e definir o roadmap.",
+            "deliverables": ["Arquitetura do sistema", "Mapa de integrações", "Plano de entrega"]
+          },
+          {
+            "title": "Construir",
+            "description": "Implementar com engenharia disciplinada e QA.",
+            "deliverables": ["Software funcional", "Plano de testes", "Documentação"]
+          },
+          {
+            "title": "Lançar",
+            "description": "Implantar, treinar e estabelecer ownership.",
+            "deliverables": ["Checklist de deploy", "Enablement da equipe", "Handover"]
+          },
+          {
+            "title": "Melhorar",
+            "description": "Medir, iterar e ampliar a cobertura de automação.",
+            "deliverables": ["Revisão de performance", "Backlog de otimização", "Opção de retainer"]
+          }
+        ],
+        "cta": {
+          "label": "Ver o processo completo",
+          "microcopy": "Entregáveis, marcos e governança detalhados.",
+          "variant": "primary"
+        }
+      },
+      "useCases": {
+        "headline": "Casos de uso por função",
+        "subheadline": "Focamos em alavancagem operacional nas equipes centrais.",
+        "cards": [
+          {
+            "title": "Operações",
+            "description": "Automatize handoffs, aprovações e relatórios."
+          },
+          {
+            "title": "Operações financeiras",
+            "description": "Reduza o fechamento com conciliações e alertas automatizados."
+          },
+          {
+            "title": "Suporte ao cliente",
+            "description": "Workflows de roteamento, conhecimento e resolução com AI."
+          },
+          {
+            "title": "Operações comerciais",
+            "description": "Higiene de CRM, enrichment de leads e follow-ups automatizados."
+          },
+          {
+            "title": "People ops",
+            "description": "Onboarding, workflows de RH e documentação."
+          },
+          {
+            "title": "Analytics",
+            "description": "Pipelines de dados unificados e dashboards prontos para decisão."
+          }
+        ],
+        "cta": {
+          "label": "Explorar casos de uso",
+          "microcopy": "Veja entregáveis e resultados por função.",
+          "variant": "secondary"
+        }
+      },
+      "whyAltamira": {
+        "headline": "Por que as equipes escolhem a Altamira",
+        "subheadline": "Pensamento sistêmico, disciplina de engenharia e alinhamento de negócio.",
+        "cards": [
+          {
+            "title": "Sistemas acima de ferramentas",
+            "description": "Desenhamos sistemas end-to-end, não features isoladas."
+          },
+          {
+            "title": "Automação como alavancagem",
+            "description": "AI aplicada onde reduz carga operacional real."
+          },
+          {
+            "title": "Engenharia com intenção",
+            "description": "Soluções confiáveis e sustentáveis para o longo prazo."
+          },
+          {
+            "title": "Alinhamento de negócio",
+            "description": "Cada entrega é ligada a resultados operacionais mensuráveis."
+          }
+        ],
+        "cta": {
+          "label": "Conheça o time",
+          "microcopy": "História, princípios e padrões de entrega.",
+          "variant": "secondary"
+        }
+      },
+      "faq": {
+        "headline": "Perguntas frequentes",
+        "subheadline": "Respostas diretas sobre escopo, prazos e ownership.",
+        "items": [
+          {
+            "question": "Como vocês precificam os projetos?",
+            "answer": "Fazemos propostas sob medida com base em escopo, complexidade e impacto esperado. Sem tabela de horas nem custos ocultos."
+          },
+          {
+            "question": "Quais prazos podemos esperar?",
+            "answer": "Discovery normalmente leva 1-2 semanas. Os builds variam de sprints de 2 semanas a MVPs de 12 semanas, conforme o escopo."
+          },
+          {
+            "question": "Qual stack vocês usam?",
+            "answer": "Trabalhamos principalmente com TypeScript, Python, Next.js, FastAPI, AWS e tooling moderno de dados, conforme o melhor fit."
+          },
+          {
+            "question": "Como lidam com segurança e privacidade?",
+            "answer": "Aplicamos acesso de mínimo privilégio, tratamento seguro de dados e limites claros de uso. Não revendemos nem reutilizamos dados de clientes."
+          },
+          {
+            "question": "Quem é dono do código e da IP?",
+            "answer": "O cliente é dono do código, dados e IP por padrão, salvo acordo por escrito."
+          },
+          {
+            "question": "Vocês oferecem manutenção contínua?",
+            "answer": "Sim. Oferecemos handover com documentação ou um retainer para melhorias e suporte contínuo."
+          },
+          {
+            "question": "Podem trabalhar junto com nossa equipe interna?",
+            "answer": "Sim. Podemos colaborar com equipes internas, orientar arquitetura ou assumir a entrega completa."
+          },
+          {
+            "question": "Vocês constroem MVPs ou apenas sistemas completos?",
+            "answer": "Construímos ambos. MVPs são projetados para escalar, não como protótipos descartáveis."
+          }
+        ],
+        "cta": {
+          "label": "Ver FAQ completo",
+          "microcopy": "Mais sobre segurança, ownership e modelos de engagement.",
+          "variant": "secondary"
+        }
+      },
+      "closingCta": {
+        "headline": "Pronto para substituir trabalho manual?",
+        "subheadline": "Ajudamos a definir a automação de maior impacto e um plano financiável.",
+        "bullets": [
+          "Chamada de discovery de 30 minutos com um engenheiro",
+          "Próximos passos claros e plano de entrega",
+          "Sem pressão, apenas clareza"
+        ],
+        "positioningCard": {
+          "headline": "Nossa linha de posicionamento",
+          "description": "Construímos sistemas inteligentes que substituem fricção por automação.",
+          "linkLabel": "Falar com a Altamira"
+        },
+        "cta": {
+          "label": "Agendar uma chamada",
+          "microcopy": "Respondemos em até dois dias úteis.",
+          "variant": "primary"
+        }
+      }
+    },
+    "about": {
+      "meta": {
+        "title": "Sobre a Altamira Tech Labs | Consultoria de AI focada em sistemas",
+        "description": "Altamira Tech Labs é uma consultoria boutique de AI e automação focada em pensamento sistêmico, engenharia disciplinada e resultados mensuráveis."
+      },
+      "pageLabel": "Sobre a Altamira Tech Labs",
+      "mission": {
+        "headline": "Missão e foco",
+        "subheadline": "Substituímos trabalho repetitivo por sistemas inteligentes que escalam.",
+        "bullets": [
+          "Automatizar o que não deveria ser manual",
+          "Transformar dados operacionais em insight real",
+          "Construir sistemas confiáveis conforme o time cresce"
+        ],
+        "cta": {
+          "label": "Explorar serviços",
+          "microcopy": "Como transformamos missão em entregáveis.",
+          "variant": "primary"
+        }
+      },
+      "origin": {
+        "headline": "Origem: altitude e sistemas",
+        "subheadline": "Altamira vem de altitude: ver sistemas de cima.",
+        "bullets": [
+          "A maioria das empresas sofre com sistemas fragmentados",
+          "Handoffs manuais geram erros e atrasos",
+          "Projetamos alavancagem por automação inteligente"
+        ],
+        "cta": {
+          "label": "Como trabalhamos",
+          "microcopy": "Processo estruturado e adequado à governança.",
+          "variant": "secondary"
+        }
+      },
+      "principles": {
+        "headline": "Princípios que guiam a entrega",
+        "subheadline": "Uma filosofia clara que orienta cada engagement.",
+        "cards": [
+          {
+            "title": "Sistemas acima de ferramentas",
+            "description": "Arquitetamos sistemas alinhados à sua lógica de negócio."
+          },
+          {
+            "title": "Automação como alavancagem",
+            "description": "AI é aplicada onde economiza tempo e reduz erros."
+          },
+          {
+            "title": "Engenharia com intenção",
+            "description": "Priorizamos confiabilidade, manutenibilidade e clareza."
+          },
+          {
+            "title": "Inteligência, não complexidade",
+            "description": "Simplificamos operações enquanto ampliamos capacidade."
+          }
+        ],
+        "cta": {
+          "label": "Ver casos de uso",
+          "microcopy": "Como esses princípios aparecem na prática.",
+          "variant": "secondary"
+        }
+      },
+      "delivery": {
+        "headline": "Qualidade e entrega",
+        "subheadline": "Entregamos com disciplina, transparência e ownership claro.",
+        "cards": [
+          {
+            "title": "O que entregamos",
+            "description": "Diagramas de sistema, mapas de workflow, docs de arquitetura, backlog e software pronto para produção."
+          },
+          {
+            "title": "Como é o sucesso",
+            "description": "Menos trabalho manual, menos erros, ciclos mais rápidos e decisões confiantes."
+          },
+          {
+            "title": "Sinais de qualidade",
+            "description": "Testing, observabilidade, documentação e código sustentável desde o dia um."
+          }
+        ],
+        "cta": {
+          "label": "Revisar nosso processo",
+          "microcopy": "Marcos, governança e detalhes de handover.",
+          "variant": "primary"
+        }
+      },
+      "ownership": {
+        "headline": "Ownership e segurança",
+        "subheadline": "Limites claros e tratamento seguro por padrão.",
+        "bullets": [
+          "O cliente é dono do código, dados e IP salvo acordo",
+          "Acesso de mínimo privilégio e manejo seguro de dados",
+          "NDA disponível e confidencialidade respeitada",
+          "Retainer opcional para manutenção ou handover completo"
+        ],
+        "cta": {
+          "label": "Iniciar uma conversa",
+          "microcopy": "Podemos alinhar requisitos de segurança desde o início.",
+          "variant": "secondary"
+        }
+      },
+      "founder": {
+        "headline": "Entrega liderada pelo fundador",
+        "subheadline": "Construído por um engenheiro focado em sistemas e resultados.",
+        "bullets": [
+          "Christian Otero, fundador e CEO",
+          "Experiência em sistemas cloud, plataformas de dados e automação",
+          "Foco em alavancagem operacional com AI aplicada"
+        ],
+        "cta": {
+          "label": "Trabalhe conosco",
+          "microcopy": "Acesso direto à pessoa responsável pela entrega.",
+          "variant": "primary"
+        }
+      }
+    },
+    "services": {
+      "meta": {
+        "title": "Serviços | Altamira Tech Labs",
+        "description": "Estratégia, automação, software sob medida e infraestrutura cloud. A Altamira Tech Labs constrói sistemas inteligentes com entregáveis claros e resultados mensuráveis."
+      },
+      "pageTitle": "Serviços para alavancagem operacional",
+      "intro": {
+        "headline": "Serviços para alavancagem operacional",
+        "subheadline": "Projetamos e construímos workflows inteligentes, sistemas de dados e software sob medida que eliminam trabalho manual e criam operações escaláveis.",
+        "bullets": [
+          "Planejamento architecture-first",
+          "AI aplicada onde cria alavancagem real",
+          "Engenharia de produção com ownership claro"
+        ],
+        "cta": {
+          "label": "Agendar uma chamada",
+          "microcopy": "Definimos o modelo de engagement certo para seu time.",
+          "variant": "primary"
+        }
+      },
+      "pillars": {
+        "headline": "Quatro pilares de serviço",
+        "subheadline": "Cada pilar inclui entregáveis concretos e resultados mensuráveis.",
+        "cards": [
+          {
+            "title": "Estratégia e design de sistemas",
+            "description": "Roadmaps de AI e automação, arquitetura e redesenho de processos.",
+            "bullets": ["Roadmap de automação", "Arquitetura de sistemas", "Transformação de processos"]
+          },
+          {
+            "title": "Hiperautomação e sistemas de AI",
+            "description": "Automação de workflows, agentes de AI e inteligência de dados.",
+            "bullets": ["Orquestração de workflows", "Copilotos e agentes de AI", "Pipelines de dados e BI"]
+          },
+          {
+            "title": "Software sob medida e SaaS",
+            "description": "Ferramentas internas, plataformas e camadas de integração.",
+            "bullets": ["Plataformas internas", "SaaS MVP até escala", "APIs e integrações"]
+          },
+          {
+            "title": "Cloud, DevOps e MLOps",
+            "description": "Infraestrutura confiável, CI/CD e AI em produção.",
+            "bullets": ["Arquitetura cloud", "CI/CD e IaC", "Deploy de MLOps"]
+          }
+        ],
+        "cta": {
+          "label": "Ver como entregamos",
+          "microcopy": "Cada pilar segue um framework claro de entrega.",
+          "variant": "secondary"
+        }
+      },
+      "packages": {
+        "headline": "Ofertas productizadas",
+        "subheadline": "Escopos definidos com entregáveis e prazos claros.",
+        "cards": [
+          {
+            "title": "Automation Sprint (2 semanas)",
+            "description": "Discovery rápido e entrega de um workflow automatizado.",
+            "bullets": ["Mapa de processos", "Automação funcional", "Roadmap de próximos passos"],
+            "meta": "Ideal para: quick wins e prova de valor"
+          },
+          {
+            "title": "Ops Intelligence Dashboard",
+            "description": "Dados unificados e relatórios para decisores.",
+            "bullets": ["Pipeline de dados", "Dashboard de KPIs", "Visão executiva"],
+            "meta": "Ideal para: equipes sem visibilidade operacional"
+          },
+          {
+            "title": "Custom AI Agent (Piloto)",
+            "description": "Assistente de AI focado em workflows internos.",
+            "bullets": ["Definição do caso", "Workflow do modelo", "Segurança e avaliação"],
+            "meta": "Ideal para: suporte, vendas ou conhecimento"
+          },
+          {
+            "title": "MVP Build (8-12 semanas)",
+            "description": "MVP pronto para produção e escalável.",
+            "bullets": ["Arquitetura e backlog", "Build core", "Suporte ao lançamento"],
+            "meta": "Ideal para: novas plataformas ou produtos internos"
+          },
+          {
+            "title": "Automation Retainer (mensal)",
+            "description": "Entrega contínua de automação e otimização.",
+            "bullets": ["Roadmap mensal", "Entrega de workflows", "Melhorias contínuas"],
+            "meta": "Ideal para: eficiência acumulada"
+          }
+        ],
+        "cta": {
+          "label": "Solicitar proposta",
+          "microcopy": "Vamos definir escopo, prazos e resultados esperados.",
+          "variant": "primary"
+        }
+      },
+      "deliverables": {
+        "headline": "O que entregamos",
+        "subheadline": "Artefatos concretos que você pode possuir e operar.",
+        "bullets": [
+          "Mapas de processos, diagramas de workflow e lógica de automação",
+          "Documentação de arquitetura e mapas de integração",
+          "Código em produção, testes e padrões de manutenibilidade",
+          "Dashboards, runbooks e materiais de handover"
+        ],
+        "cta": {
+          "label": "Revisar processo de entrega",
+          "microcopy": "Veja como estruturamos marcos e handover.",
+          "variant": "secondary"
+        }
+      },
+      "engagement": {
+        "headline": "Modelos de engagement e ownership",
+        "subheadline": "Entrega flexível com governança clara e ownership do cliente.",
+        "cards": [
+          {
+            "title": "Projeto fechado",
+            "description": "Escopo fixo, marcos e entregáveis claros.",
+            "bullets": ["Escopo definido", "Revisões por marco", "Handover ou suporte"]
+          },
+          {
+            "title": "Retainer mensal",
+            "description": "Entrega e otimização contínua.",
+            "bullets": ["Roadmap contínuo", "Automação contínua", "Suporte prioritário"]
+          },
+          {
+            "title": "Piloto e escala",
+            "description": "Comece pequeno, valide e expanda com segurança.",
+            "bullets": ["Escopo piloto", "Resultados mensurados", "Plano de escala"]
+          }
+        ],
+        "cta": {
+          "label": "Falar sobre um engagement",
+          "microcopy": "Alinhamos ownership, escopo e critérios de sucesso.",
+          "variant": "secondary"
+        }
+      },
+      "success": {
+        "headline": "Como é o sucesso",
+        "subheadline": "Resultados que tornam operações mais rápidas e confiáveis.",
+        "bullets": [
+          "Etapas manuais eliminadas ou reduzidas",
+          "Menos erros operacionais e retrabalho",
+          "Ciclos e aprovações mais rápidos",
+          "Visibilidade em tempo real do desempenho"
+        ],
+        "cta": {
+          "label": "Ver casos de uso",
+          "microcopy": "Exemplos por função e equipe.",
+          "variant": "secondary"
+        }
+      }
+    },
+    "howWeWork": {
+      "meta": {
+        "title": "Como trabalhamos | Altamira Tech Labs",
+        "description": "Processo de entrega em cinco etapas: descobrir, desenhar, construir, lançar e melhorar. Entregáveis, marcos e governança claros."
+      },
+      "pageTitle": "Como trabalhamos",
+      "intro": {
+        "headline": "Um processo de entrega disciplinado",
+        "subheadline": "Trabalhamos em fases claras com outputs definidos, cadência de comunicação e ownership compartilhado.",
+        "bullets": [
+          "Discovery orientado por escopo e redução de riscos",
+          "Arquitetura e roadmap antes da construção",
+          "Marcos com entregáveis claros"
+        ],
+        "cta": {
+          "label": "Iniciar projeto",
+          "microcopy": "Podemos definir um engagement em uma chamada curta.",
+          "variant": "primary"
+        }
+      },
+      "steps": {
+        "headline": "Workflow de entrega em cinco etapas",
+        "subheadline": "Cada etapa inclui entregáveis tangíveis e pontos de decisão.",
+        "steps": [
+          {
+            "title": "1) Descobrir",
+            "description": "Alinhar objetivos, restrições e realidade operacional.",
+            "deliverables": ["Entrevistas com stakeholders", "Mapa de processos", "Lista de oportunidades"]
+          },
+          {
+            "title": "2) Desenhar",
+            "description": "Definir arquitetura do sistema, fluxos de dados e roadmap.",
+            "deliverables": ["Diagramas de arquitetura", "Mapa de integrações", "Backlog e plano"]
+          },
+          {
+            "title": "3) Construir",
+            "description": "Implementar com testing, documentação e checagens de qualidade.",
+            "deliverables": ["Build pronto para produção", "Cobertura de testes", "Docs técnicas"]
+          },
+          {
+            "title": "4) Lançar",
+            "description": "Implantar, treinar e estabelecer ownership.",
+            "deliverables": ["Checklist de deploy", "Runbook", "Enablement da equipe"]
+          },
+          {
+            "title": "5) Melhorar",
+            "description": "Medir resultados e iterar.",
+            "deliverables": ["Revisão de KPIs", "Backlog de otimização", "Opção de retainer"]
+          }
+        ],
+        "cta": {
+          "label": "Ver pilares de serviço",
+          "microcopy": "Cada etapa se conecta aos serviços que entregamos.",
+          "variant": "secondary"
+        }
+      },
+      "deliverables": {
+        "headline": "O que entregamos",
+        "subheadline": "Artefatos que tornam sistemas claros, confiáveis e fáceis de operar.",
+        "bullets": [
+          "Diagramas de arquitetura e mapas de integração",
+          "Automação de workflows, pipelines de dados e dashboards",
+          "Testing, observabilidade e documentação"
+        ],
+        "cta": {
+          "label": "Explorar serviços",
+          "microcopy": "Veja os pilares que entregamos.",
+          "variant": "secondary"
+        }
+      },
+      "governance": {
+        "headline": "Marcos e comunicação",
+        "subheadline": "Checkpoints claros mantêm a entrega alinhada e previsível.",
+        "bullets": [
+          "Atualizações semanais e revisões por marco",
+          "Visibilidade de escopo, prazo e riscos",
+          "Documentação compartilhada e registro de decisões"
+        ],
+        "cta": {
+          "label": "Ver plano de exemplo",
+          "microcopy": "Podemos compartilhar um plano de entrega de alto nível.",
+          "variant": "secondary"
+        }
+      },
+      "expectations": {
+        "headline": "O que os clientes podem esperar",
+        "subheadline": "Clareza, ownership e práticas de entrega seguras.",
+        "bullets": [
+          "Cliente é dono do código, dados e IP por padrão",
+          "Tratamento seguro e acesso de mínimo privilégio",
+          "Opções de handover ou manutenção contínua"
+        ],
+        "cta": {
+          "label": "Discutir detalhes",
+          "microcopy": "Alinhamos governança e handover desde o início.",
+          "variant": "primary"
+        }
+      },
+      "success": {
+        "headline": "Como é o sucesso",
+        "subheadline": "Sistemas confiáveis que reduzem esforço e aumentam clareza.",
+        "bullets": [
+          "Trabalho manual substituído por workflows automatizados",
+          "Ciclos mais rápidos e menos erros",
+          "Dashboards claros e ownership operacional"
+        ],
+        "cta": {
+          "label": "Ver casos de uso",
+          "microcopy": "Exemplos de sucesso por função.",
+          "variant": "secondary"
+        }
+      }
+    },
+    "useCases": {
+      "meta": {
+        "title": "Casos de uso | Altamira Tech Labs",
+        "description": "Automação e inteligência de dados para ops, finanças, suporte, sales ops, RH e analytics. Resultados práticos, sem hype."
+      },
+      "pageTitle": "Casos de uso por função",
+      "intro": {
+        "headline": "Casos de uso e indústrias",
+        "subheadline": "Focamos em sistemas operacionais que mantêm equipes em movimento.",
+        "bullets": [
+          "Automação para workflows repetitivos e de alto volume",
+          "Sistemas de dados que revelam gargalos e tendências",
+          "Ferramentas sob medida que escalam com sua equipe"
+        ],
+        "cta": {
+          "label": "Falar sobre seu caso",
+          "microcopy": "Podemos avaliar o fit em uma chamada breve.",
+          "variant": "primary"
+        }
+      },
+      "byFunction": {
+        "headline": "Visão funcional dos casos",
+        "subheadline": "Áreas comuns onde a automação gera alavancagem.",
+        "cards": [
+          {
+            "title": "Operações",
+            "description": "Automatizar aprovações, handoffs e relatórios.",
+            "bullets": ["Automação de workflows", "Alertas e roteamento", "Dashboards operacionais"]
+          },
+          {
+            "title": "Operações financeiras",
+            "description": "Reduzir tempo de fechamento e melhorar precisão.",
+            "bullets": ["Pipelines de conciliação", "Alertas de exceções", "Relatórios prontos para auditoria"]
+          },
+          {
+            "title": "Suporte ao cliente",
+            "description": "Melhorar tempos de resolução com workflows assistidos por AI.",
+            "bullets": ["Triagem de tickets", "Busca em base de conhecimento", "Checks de qualidade"]
+          },
+          {
+            "title": "Sales ops",
+            "description": "Manter pipelines limpos e equipes focadas.",
+            "bullets": ["Enrichment de leads", "Automação de CRM", "Workflows de follow-up"]
+          },
+          {
+            "title": "People ops",
+            "description": "Onboarding e workflows internos otimizados.",
+            "bullets": ["Fluxos de onboarding", "Automação de políticas", "Dashboards de RH"]
+          },
+          {
+            "title": "Analytics",
+            "description": "Pipelines de dados confiáveis e insights.",
+            "bullets": ["Pipelines ETL", "Métricas unificadas", "Dashboards prontos para decisão"]
+          }
+        ],
+        "cta": {
+          "label": "Ver pilares de serviço",
+          "microcopy": "Cada caso se conecta a um pilar central.",
+          "variant": "secondary"
+        }
+      },
+      "deliverables": {
+        "headline": "Entregáveis típicos",
+        "subheadline": "Artefatos concretos que facilitam o ownership.",
+        "bullets": [
+          "Mapas de processos e diagramas de automação",
+          "Arquitetura do sistema e mapas de integração",
+          "Dashboards, workflows e runbooks documentados"
+        ],
+        "cta": {
+          "label": "Ver nosso processo",
+          "microcopy": "Entregáveis ligados a marcos e resultados.",
+          "variant": "secondary"
+        }
+      },
+      "outcomes": {
+        "headline": "Resultados operacionais exemplares",
+        "subheadline": "Melhorias mensuradas sem promessas infladas.",
+        "bullets": [
+          "Ciclos e aprovações mais rápidos",
+          "Menos erros manuais e retrabalho",
+          "Maior accountability e visibilidade para as equipes"
+        ],
+        "cta": {
+          "label": "Planejar o engagement",
+          "microcopy": "Podemos delinear resultados esperados desde o início.",
+          "variant": "primary"
+        }
+      }
+    },
+    "blog": {
+      "meta": {
+        "title": "Blog | Altamira Tech Labs",
+        "description": "Conteúdo sobre pensamento sistêmico, automação e AI aplicada para equipes operacionais."
+      },
+      "pageTitle": "Insights de sistemas e automação",
+      "ui": {
+        "emptyState": "Ainda não há posts. Adicione conteúdo no Sanity para preencher este índice.",
+        "notFoundTitle": "Post não encontrado",
+        "backToBlogLabel": "Voltar ao blog",
+        "continueTitle": "Continue a conversa",
+        "authorTitle": "Sobre o autor",
+        "categoriesLabel": "Categorias sugeridas",
+        "emptyContent": "O conteúdo está vazio."
+      },
+      "indexIntro": {
+        "headline": "O que você vai aprender",
+        "subheadline": "Uma perspectiva de fundador-engenheiro sobre automação, dados e sistemas resilientes.",
+        "bullets": [
+          "Como a automação muda workflows operacionais",
+          "Padrões para construir ferramentas internas que são usadas",
+          "Projetar sistemas de dados para decisões reais"
+        ],
+        "cta": {
+          "label": "Trabalhe conosco",
+          "microcopy": "Se algum tema fizer sentido, podemos ajudar na implementação.",
+          "variant": "secondary"
+        }
+      },
+      "categories": [
+        "Pensamento sistêmico",
+        "Padrões de automação",
+        "Inteligência de dados",
+        "AI em operações",
+        "Engenharia de plataforma"
+      ],
+      "postTemplate": {
+        "hookLabel": "Ideia central e contexto",
+        "problemLabel": "Enquadramento do problema e impacto",
+        "frameworkLabel": "Framework de sistema proposto",
+        "examplesLabel": "Exemplos práticos",
+        "checklistLabel": "Checklist de prontidão",
+        "hookFallback": "Este artigo apresenta o contexto operacional, as escolhas de design do sistema e os passos práticos para aplicá-las.",
+        "problemPoints": [
+          "Onde o trabalho manual cria gargalos",
+          "Onde os dados não têm clareza ou ownership",
+          "Onde as equipes precisam de melhor suporte à decisão"
+        ],
+        "frameworkPoints": [
+          "Definir o workflow e o resultado desejado",
+          "Mapear fontes de dados e integrações",
+          "Automatizar primeiro os passos de maior valor"
+        ],
+        "examplePoints": [
+          "Roteamento e aprovações automatizados",
+          "Processamento de documentos assistido por AI",
+          "Dashboards com alertas em tempo real"
+        ],
+        "checklistPoints": [
+          "Responsável claro por cada workflow",
+          "Inputs e outputs documentados",
+          "Monitoramento e tratamento de erros",
+          "Acesso seguro e gestão de dados",
+          "Plano para iteração"
+        ],
+        "cta": {
+          "label": "Fale com a Altamira",
+          "microcopy": "Podemos transformar essas ideias em um plano com escopo claro.",
+          "variant": "primary"
+        },
+        "authorBio": "Altamira Tech Labs é uma consultoria boutique de AI e automação focada em pensamento sistêmico, engenharia disciplinada e clareza operacional."
+      }
+    },
+    "contact": {
+      "meta": {
+        "title": "Contato | Altamira Tech Labs",
+        "description": "Fale com a Altamira Tech Labs sobre automação, sistemas de dados e software sob medida para equipes operacionais."
+      },
+      "pageTitle": "Inicie a conversa",
+      "intro": {
+        "headline": "Inicie a conversa",
+        "subheadline": "Compartilhe seus objetivos operacionais e proporemos o próximo passo.",
+        "bullets": [
+          "Respondemos em até dois dias úteis",
+          "Escopo claro e plano de entrega",
+          "Sem pressão ou scripts de venda"
+        ],
+        "cta": {
+          "label": "Enviar mensagem",
+          "microcopy": "Responderemos com um plano de discovery curto.",
+          "variant": "primary"
+        }
+      }
+    }
+  },
+  "rss": {
+    "channelTitle": "Altamira Tech Labs Blog ({locale})",
+    "description": "Artigos sobre AI, automação, engenharia de software e sistemas."
   }
 }

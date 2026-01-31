@@ -1,11 +1,12 @@
 import "@/app/globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { getDictionary } from "@/lib/i18n/dictionaries";
-import { isLocale, type Locale, defaultLocale } from "@/lib/i18n/locales";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages, unstable_setRequestLocale } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 
 export async function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "es" }, { locale: "pt" }, { locale: "fr" }, { locale: "de" }];
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({
@@ -15,15 +16,20 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
-  const t = await getDictionary(locale);
+  const locale = routing.locales.includes(params.locale as any)
+    ? params.locale
+    : routing.defaultLocale;
+  unstable_setRequestLocale(locale);
+  const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <body>
-        <Navbar locale={locale} t={t} />
-        <main>{children}</main>
-        <Footer locale={locale} t={t} />
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Navbar locale={locale} />
+          <main>{children}</main>
+          <Footer locale={locale} />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

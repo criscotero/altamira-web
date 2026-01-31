@@ -1,16 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 
 export function ContactForm({
-  locale,
-  submitLabel = "Send",
+  submitLabel,
   submitMicrocopy,
 }: {
-  locale: string;
   submitLabel?: string;
   submitMicrocopy?: string;
 }) {
+  const locale = useLocale();
+  const t = useTranslations("contactForm");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -54,30 +55,57 @@ export function ContactForm({
     <form onSubmit={onSubmit} className="mt-8 grid max-w-xl gap-4">
       <input className="hidden" name="website" tabIndex={-1} autoComplete="off" />
 
-      <input className="rounded-lg border border-zinc-300 px-3 py-2" name="name" placeholder="Name" required minLength={2} />
-      <input className="rounded-lg border border-zinc-300 px-3 py-2" name="email" placeholder="Email" required type="email" />
-      <input className="rounded-lg border border-zinc-300 px-3 py-2" name="company" placeholder="Company (optional)" />
-      <input className="rounded-lg border border-zinc-300 px-3 py-2" name="interest" placeholder="Interest (optional)" />
-      <textarea className="rounded-lg border border-zinc-300 px-3 py-2" name="message" placeholder="Message" rows={6} required minLength={10} />
+      <input
+        className="rounded-lg border border-zinc-300 px-3 py-2"
+        name="name"
+        placeholder={t("fields.name")}
+        required
+        minLength={2}
+      />
+      <input
+        className="rounded-lg border border-zinc-300 px-3 py-2"
+        name="email"
+        placeholder={t("fields.email")}
+        required
+        type="email"
+      />
+      <input
+        className="rounded-lg border border-zinc-300 px-3 py-2"
+        name="company"
+        placeholder={t("fields.company")}
+      />
+      <input
+        className="rounded-lg border border-zinc-300 px-3 py-2"
+        name="interest"
+        placeholder={t("fields.interest")}
+      />
+      <textarea
+        className="rounded-lg border border-zinc-300 px-3 py-2"
+        name="message"
+        placeholder={t("fields.message")}
+        rows={6}
+        required
+        minLength={10}
+      />
 
       <button
         className="rounded-lg bg-brand-orange px-4 py-2 text-white hover:bg-brand-orange2 disabled:opacity-50"
         type="submit"
         disabled={status === "sending"}
       >
-        {status === "sending" ? "Sending..." : submitLabel}
+        {status === "sending" ? t("status.sending") : (submitLabel ?? t("submit"))}
       </button>
       {submitMicrocopy ? <p className="text-xs text-zinc-600">{submitMicrocopy}</p> : null}
 
       {status === "sent" ? (
         <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-800">
-          Message sent. We will reply soon.
+          {t("status.success")}
         </div>
       ) : null}
 
       {status === "error" ? (
         <div className="rounded-lg border border-rose-200 bg-rose-50 p-3 text-sm text-rose-800">
-          Error sending message: {error}
+          {t("status.error", { error: error ?? "error" })}
         </div>
       ) : null}
     </form>

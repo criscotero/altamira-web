@@ -1,11 +1,11 @@
 import { getSiteUrl } from "@/lib/site";
 
-export function organizationJsonLd() {
+export function organizationJsonLd(name: string) {
   const baseUrl = getSiteUrl();
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Altamira Tech Labs",
+    name,
     url: baseUrl,
     sameAs: [],
   };
@@ -19,6 +19,7 @@ export function articleJsonLd(args: {
   description?: string;
   authorName?: string;
   imageUrl?: string;
+  publisherName: string;
 }) {
   const baseUrl = getSiteUrl();
   return {
@@ -32,7 +33,7 @@ export function articleJsonLd(args: {
     author: args.authorName ? { "@type": "Person", name: args.authorName } : undefined,
     publisher: {
       "@type": "Organization",
-      name: "Altamira Tech Labs",
+      name: args.publisherName,
       url: baseUrl,
     },
     image: args.imageUrl ? [args.imageUrl] : undefined,

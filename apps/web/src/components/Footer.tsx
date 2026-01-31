@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { SVGProps } from "react";
 import type { Locale } from "@/lib/i18n/locales";
-import { siteCopy } from "@/content/siteCopy";
 import { Container } from "./Container";
+import { useTranslations } from "next-intl";
+import { EMAIL_ADDRESS, LINKEDIN_URL } from "@/lib/links";
 
 const ICON_SIZE = 18;
 
@@ -26,13 +27,7 @@ const iconWrapClass =
 const iconClass =
   `h-[${ICON_SIZE}px] w-[${ICON_SIZE}px] text-white/90 transition-colors duration-200 group-hover:text-brand-orangeSoft`;
 
-const localeLinks = [
-  { code: "en", label: "EN", flag: "🇺🇸" },
-  { code: "es", label: "ES", flag: "🇪🇸" },
-  { code: "pt", label: "PT", flag: "🇧🇷" },
-  { code: "fr", label: "FR", flag: "🇫🇷" },
-  { code: "de", label: "DE", flag: "🇩🇪" },
-] as const;
+type LocaleLink = { code: string; label: string; flag: string };
 
 function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -114,8 +109,13 @@ function MapPinIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function Footer({ locale, t }: { locale: Locale; t: any }) {
+export function Footer({ locale }: { locale: Locale }) {
+  const footer = useTranslations("footer");
+  const brand = useTranslations("brand");
   const year = new Date().getFullYear();
+  const localeLinks = footer.raw("localeLinks") as LocaleLink[];
+  const addressLines = footer.raw("contact.address") as string[];
+  const phoneNumbers = footer.raw("contact.phones") as string[];
 
   return (
     <footer className={`mt-px border-t border-white/10 ${footerBg} ${footerText}`}>
@@ -127,35 +127,41 @@ export function Footer({ locale, t }: { locale: Locale; t: any }) {
                 className="inline-flex h-2.5 w-2.5 rounded-full bg-brand-orangeSoft shadow-[0_0_12px_rgba(243,162,109,0.45)]"
                 aria-hidden="true"
               />
-              <span className="text-lg font-semibold tracking-tight">{siteCopy.brand.name}</span>
+              <span className="text-lg font-semibold tracking-tight">{brand("name")}</span>
             </div>
-            <p className="text-sm leading-relaxed text-white/75">{siteCopy.brand.shortDescription}</p>
+            <p className="text-sm leading-relaxed text-white/75">{brand("shortDescription")}</p>
           </div>
 
-          <nav aria-label="Navigation" className="space-y-4">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">Navigation</h3>
+          <nav aria-label={footer("navigationTitle")} className="space-y-4">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+              {footer("navigationTitle")}
+            </h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href={`/${locale}`} className={navLinkClass}>Home</Link></li>
-              <li><Link href={`/${locale}/about`} className={navLinkClass}>About</Link></li>
-              <li><Link href={`/${locale}/services`} className={navLinkClass}>Services</Link></li>
-              <li><Link href={`/${locale}/blog`} className={navLinkClass}>Blog</Link></li>
-              <li><Link href={`/${locale}/contact`} className={navLinkClass}>Contact</Link></li>
+              <li><Link href={`/${locale}`} className={navLinkClass}>{footer("navigation.home")}</Link></li>
+              <li><Link href={`/${locale}/about`} className={navLinkClass}>{footer("navigation.about")}</Link></li>
+              <li><Link href={`/${locale}/services`} className={navLinkClass}>{footer("navigation.services")}</Link></li>
+              <li><Link href={`/${locale}/blog`} className={navLinkClass}>{footer("navigation.blog")}</Link></li>
+              <li><Link href={`/${locale}/contact`} className={navLinkClass}>{footer("navigation.contact")}</Link></li>
             </ul>
           </nav>
 
-          <nav aria-label="Services" className="space-y-4">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">Services</h3>
+          <nav aria-label={footer("servicesTitle")} className="space-y-4">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+              {footer("servicesTitle")}
+            </h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href={`/${locale}/services`} className={navLinkClass}>Custom Software</Link></li>
-              <li><Link href={`/${locale}/services`} className={navLinkClass}>AI & Automation</Link></li>
-              <li><Link href={`/${locale}/services`} className={navLinkClass}>Web & Mobile</Link></li>
-              <li><Link href={`/${locale}/services`} className={navLinkClass}>Integrations & APIs</Link></li>
-              <li><Link href={`/${locale}/services`} className={navLinkClass}>Cloud & DevOps</Link></li>
+              <li><Link href={`/${locale}/services`} className={navLinkClass}>{footer("services.customSoftware")}</Link></li>
+              <li><Link href={`/${locale}/services`} className={navLinkClass}>{footer("services.aiAutomation")}</Link></li>
+              <li><Link href={`/${locale}/services`} className={navLinkClass}>{footer("services.webMobile")}</Link></li>
+              <li><Link href={`/${locale}/services`} className={navLinkClass}>{footer("services.integrations")}</Link></li>
+              <li><Link href={`/${locale}/services`} className={navLinkClass}>{footer("services.cloudDevops")}</Link></li>
             </ul>
           </nav>
 
           <div className="space-y-4">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">Contact</h3>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+              {footer("contactTitle")}
+            </h3>
 
             <div className="space-y-4 text-sm">
               <div className="flex items-start gap-3 text-white/85">
@@ -163,9 +169,10 @@ export function Footer({ locale, t }: { locale: Locale; t: any }) {
                   <PhoneIcon className={iconClass} />
                 </span>
                 <div className="space-y-1">
-                  <div>Phone / WhatsApp</div>
-                  <div>+1 302-595-7259</div>
-                  <div>+57 315-070-5119</div>
+                  <div>{footer("contact.phoneLabel")}</div>
+                  {phoneNumbers.map((number) => (
+                    <div key={number}>{number}</div>
+                  ))}
                 </div>
               </div>
 
@@ -174,30 +181,29 @@ export function Footer({ locale, t }: { locale: Locale; t: any }) {
                   <MapPinIcon className={iconClass} />
                 </span>
                 <div className="space-y-1">
-                  <div>Altamira Tech Labs</div>
-                  <div>123 Main St, Suite 456</div>
-                  <div>Dover, DE 19901</div>
-                  <div>USA</div>
+                  {addressLines.map((line) => (
+                    <div key={line}>{line}</div>
+                  ))}
                 </div>
               </div>
 
               <a
                 className={socialLinkClass}
-                href="https://linkedin.com/company/altamira-tech-labs"
+                href={LINKEDIN_URL}
                 target="_blank"
                 rel="noreferrer noopener"
               >
                 <span className={iconWrapClass} aria-hidden="true">
                   <LinkedinIcon className={iconClass} />
                 </span>
-                <span>LinkedIn</span>
+                <span>{footer("contact.linkedinLabel")}</span>
               </a>
 
-              <a className={socialLinkClass} href="mailto:hello@altamiratechlabs.com">
+              <a className={socialLinkClass} href={`mailto:${EMAIL_ADDRESS}`}>
                 <span className={iconWrapClass} aria-hidden="true">
                   <MailIcon className={iconClass} />
                 </span>
-                <span>Email</span>
+                <span>{footer("contact.emailLabel")}</span>
               </a>
             </div>
           </div>
@@ -207,8 +213,8 @@ export function Footer({ locale, t }: { locale: Locale; t: any }) {
       <div className="border-t border-white/10">
         <Container>
           <div className="flex flex-col gap-3 py-4 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
-            <span>© {year} {siteCopy.brand.name}. {t.footer.rights}</span>
-            <span className="text-white/45">{siteCopy.brand.tagline}</span>
+            <span>© {year} {brand("name")}. {footer("rights")}</span>
+            <span className="text-white/45">{brand("tagline")}</span>
             <div className="flex flex-wrap items-center gap-2">
               {localeLinks.map((item) => (
                 <Link

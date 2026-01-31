@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
-import { siteCopy } from "@/content/siteCopy";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { isLocale, type Locale, defaultLocale } from "@/lib/i18n/locales";
+import { getTranslations } from "next-intl/server";
 
 const primaryCtaClass =
   "inline-flex items-center justify-center rounded-lg bg-brand-orange px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-orange2";
@@ -21,31 +21,40 @@ function resolveHref(locale: Locale, href: string) {
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
-  const meta = siteCopy.pages.howWeWork.meta;
+  const t = await getTranslations({ locale });
+
   return buildMetadata({
-    title: meta.title,
-    description: meta.description,
-    path: `/${locale}${siteCopy.links.howWeWork}`,
+    title: t("pages.howWeWork.meta.title"),
+    description: t("pages.howWeWork.meta.description"),
+    path: `/${locale}/how-we-work`,
     locale,
+    siteName: t("brand.name"),
   });
 }
 
-export default function HowWeWorkPage({ params }: { params: { locale: string } }) {
+export default async function HowWeWorkPage({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
-  const copy = siteCopy.pages.howWeWork;
+  const t = await getTranslations({ locale, namespace: "pages.howWeWork" });
 
-  const renderCta = (cta: typeof copy.intro.cta) => {
+  const intro = t.raw("intro") as any;
+  const steps = t.raw("steps") as any;
+  const deliverables = t.raw("deliverables") as any;
+  const governance = t.raw("governance") as any;
+  const expectations = t.raw("expectations") as any;
+  const success = t.raw("success") as any;
+
+  const renderCta = (cta: any, href: string) => {
     const className = cta.variant === "primary" ? primaryCtaClass : secondaryCtaClass;
-    const href = resolveHref(locale, cta.href);
+    const resolvedHref = resolveHref(locale, href);
 
     return (
       <div className="mt-6 flex flex-col gap-2">
-        {isExternalHref(cta.href) ? (
-          <a className={className} href={href} target="_blank" rel="noreferrer noopener">
+        {isExternalHref(href) ? (
+          <a className={className} href={resolvedHref} target="_blank" rel="noreferrer noopener">
             {cta.label}
           </a>
         ) : (
-          <Link className={className} href={href}>
+          <Link className={className} href={resolvedHref}>
             {cta.label}
           </Link>
         )}
@@ -59,17 +68,17 @@ export default function HowWeWorkPage({ params }: { params: { locale: string } }
       <section className="bg-white">
         <Container>
           <div className="py-12">
-            <h1 className="text-3xl font-semibold tracking-tight text-brand-navy">{copy.pageTitle}</h1>
-            <p className="mt-4 max-w-2xl text-sm text-zinc-600">{copy.intro.subheadline}</p>
+            <h1 className="text-3xl font-semibold tracking-tight text-brand-navy">{t("pageTitle")}</h1>
+            <p className="mt-4 max-w-2xl text-sm text-zinc-600">{intro.subheadline}</p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-600">
-              {copy.intro.bullets.map((item) => (
+              {intro.bullets.map((item: string) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            {renderCta(copy.intro.cta)}
+            {renderCta(intro.cta, "/contact")}
           </div>
         </Container>
       </section>
@@ -77,15 +86,15 @@ export default function HowWeWorkPage({ params }: { params: { locale: string } }
       <section className="bg-white">
         <Container>
           <div className="py-12">
-            <h2 className="text-2xl font-semibold text-brand-navy">{copy.steps.headline}</h2>
-            <p className="mt-2 text-sm text-zinc-600">{copy.steps.subheadline}</p>
+            <h2 className="text-2xl font-semibold text-brand-navy">{steps.headline}</h2>
+            <p className="mt-2 text-sm text-zinc-600">{steps.subheadline}</p>
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {copy.steps.steps.map((step) => (
+              {steps.steps.map((step: any) => (
                 <div key={step.title} className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
                   <h3 className="text-sm font-semibold text-brand-navy">{step.title}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{step.description}</p>
                   <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-                    {step.deliverables.map((deliverable) => (
+                    {step.deliverables.map((deliverable: string) => (
                       <li key={deliverable} className="flex items-start gap-2">
                         <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                         <span>{deliverable}</span>
@@ -95,7 +104,7 @@ export default function HowWeWorkPage({ params }: { params: { locale: string } }
                 </div>
               ))}
             </div>
-            {renderCta(copy.steps.cta)}
+            {renderCta(steps.cta, "/services")}
           </div>
         </Container>
       </section>
@@ -103,17 +112,17 @@ export default function HowWeWorkPage({ params }: { params: { locale: string } }
       <section className="bg-white">
         <Container>
           <div className="py-12">
-            <h2 className="text-2xl font-semibold text-brand-navy">{copy.deliverables.headline}</h2>
-            <p className="mt-2 text-sm text-zinc-600">{copy.deliverables.subheadline}</p>
+            <h2 className="text-2xl font-semibold text-brand-navy">{deliverables.headline}</h2>
+            <p className="mt-2 text-sm text-zinc-600">{deliverables.subheadline}</p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-600">
-              {copy.deliverables.bullets.map((item) => (
+              {deliverables.bullets.map((item: string) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            {renderCta(copy.deliverables.cta)}
+            {renderCta(deliverables.cta, "/services")}
           </div>
         </Container>
       </section>
@@ -121,17 +130,17 @@ export default function HowWeWorkPage({ params }: { params: { locale: string } }
       <section className="bg-white">
         <Container>
           <div className="py-12">
-            <h2 className="text-2xl font-semibold text-brand-navy">{copy.governance.headline}</h2>
-            <p className="mt-2 text-sm text-zinc-600">{copy.governance.subheadline}</p>
+            <h2 className="text-2xl font-semibold text-brand-navy">{governance.headline}</h2>
+            <p className="mt-2 text-sm text-zinc-600">{governance.subheadline}</p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-600">
-              {copy.governance.bullets.map((item) => (
+              {governance.bullets.map((item: string) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            {renderCta(copy.governance.cta)}
+            {renderCta(governance.cta, "/contact")}
           </div>
         </Container>
       </section>
@@ -139,17 +148,17 @@ export default function HowWeWorkPage({ params }: { params: { locale: string } }
       <section className="bg-white">
         <Container>
           <div className="py-12">
-            <h2 className="text-2xl font-semibold text-brand-navy">{copy.expectations.headline}</h2>
-            <p className="mt-2 text-sm text-zinc-600">{copy.expectations.subheadline}</p>
+            <h2 className="text-2xl font-semibold text-brand-navy">{expectations.headline}</h2>
+            <p className="mt-2 text-sm text-zinc-600">{expectations.subheadline}</p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-600">
-              {copy.expectations.bullets.map((item) => (
+              {expectations.bullets.map((item: string) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            {renderCta(copy.expectations.cta)}
+            {renderCta(expectations.cta, "/contact")}
           </div>
         </Container>
       </section>
@@ -157,17 +166,17 @@ export default function HowWeWorkPage({ params }: { params: { locale: string } }
       <section className="bg-white">
         <Container>
           <div className="py-12">
-            <h2 className="text-2xl font-semibold text-brand-navy">{copy.success.headline}</h2>
-            <p className="mt-2 text-sm text-zinc-600">{copy.success.subheadline}</p>
+            <h2 className="text-2xl font-semibold text-brand-navy">{success.headline}</h2>
+            <p className="mt-2 text-sm text-zinc-600">{success.subheadline}</p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-600">
-              {copy.success.bullets.map((item) => (
+              {success.bullets.map((item: string) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            {renderCta(copy.success.cta)}
+            {renderCta(success.cta, "/use-cases")}
           </div>
         </Container>
       </section>

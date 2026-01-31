@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
-import { siteCopy } from "@/content/siteCopy";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { isLocale, type Locale, defaultLocale } from "@/lib/i18n/locales";
+import { getTranslations } from "next-intl/server";
 
 const primaryCtaClass =
   "inline-flex items-center justify-center rounded-lg bg-brand-orange px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-orange2";
@@ -21,31 +21,38 @@ function resolveHref(locale: Locale, href: string) {
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
-  const meta = siteCopy.pages.useCases.meta;
+  const t = await getTranslations({ locale });
+
   return buildMetadata({
-    title: meta.title,
-    description: meta.description,
-    path: `/${locale}${siteCopy.links.useCases}`,
+    title: t("pages.useCases.meta.title"),
+    description: t("pages.useCases.meta.description"),
+    path: `/${locale}/use-cases`,
     locale,
+    siteName: t("brand.name"),
   });
 }
 
-export default function UseCasesPage({ params }: { params: { locale: string } }) {
+export default async function UseCasesPage({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
-  const copy = siteCopy.pages.useCases;
+  const t = await getTranslations({ locale, namespace: "pages.useCases" });
 
-  const renderCta = (cta: typeof copy.intro.cta) => {
+  const intro = t.raw("intro") as any;
+  const byFunction = t.raw("byFunction") as any;
+  const deliverables = t.raw("deliverables") as any;
+  const outcomes = t.raw("outcomes") as any;
+
+  const renderCta = (cta: any, href: string) => {
     const className = cta.variant === "primary" ? primaryCtaClass : secondaryCtaClass;
-    const href = resolveHref(locale, cta.href);
+    const resolvedHref = resolveHref(locale, href);
 
     return (
       <div className="mt-6 flex flex-col gap-2">
-        {isExternalHref(cta.href) ? (
-          <a className={className} href={href} target="_blank" rel="noreferrer noopener">
+        {isExternalHref(href) ? (
+          <a className={className} href={resolvedHref} target="_blank" rel="noreferrer noopener">
             {cta.label}
           </a>
         ) : (
-          <Link className={className} href={href}>
+          <Link className={className} href={resolvedHref}>
             {cta.label}
           </Link>
         )}
@@ -59,17 +66,17 @@ export default function UseCasesPage({ params }: { params: { locale: string } })
       <section className="bg-white">
         <Container>
           <div className="py-12">
-            <h1 className="text-3xl font-semibold tracking-tight text-brand-navy">{copy.pageTitle}</h1>
-            <p className="mt-4 max-w-2xl text-sm text-zinc-600">{copy.intro.subheadline}</p>
+            <h1 className="text-3xl font-semibold tracking-tight text-brand-navy">{t("pageTitle")}</h1>
+            <p className="mt-4 max-w-2xl text-sm text-zinc-600">{intro.subheadline}</p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-600">
-              {copy.intro.bullets.map((item) => (
+              {intro.bullets.map((item: string) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            {renderCta(copy.intro.cta)}
+            {renderCta(intro.cta, "/contact")}
           </div>
         </Container>
       </section>
@@ -77,16 +84,16 @@ export default function UseCasesPage({ params }: { params: { locale: string } })
       <section className="bg-white">
         <Container>
           <div className="py-12">
-            <h2 className="text-2xl font-semibold text-brand-navy">{copy.byFunction.headline}</h2>
-            <p className="mt-2 text-sm text-zinc-600">{copy.byFunction.subheadline}</p>
+            <h2 className="text-2xl font-semibold text-brand-navy">{byFunction.headline}</h2>
+            <p className="mt-2 text-sm text-zinc-600">{byFunction.subheadline}</p>
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {copy.byFunction.cards.map((card) => (
+              {byFunction.cards.map((card: any) => (
                 <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
                   <h3 className="text-sm font-semibold text-brand-navy">{card.title}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{card.description}</p>
                   {card.bullets ? (
                     <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-                      {card.bullets.map((bullet) => (
+                      {card.bullets.map((bullet: string) => (
                         <li key={bullet} className="flex items-start gap-2">
                           <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                           <span>{bullet}</span>
@@ -97,7 +104,7 @@ export default function UseCasesPage({ params }: { params: { locale: string } })
                 </div>
               ))}
             </div>
-            {renderCta(copy.byFunction.cta)}
+            {renderCta(byFunction.cta, "/services")}
           </div>
         </Container>
       </section>
@@ -105,17 +112,17 @@ export default function UseCasesPage({ params }: { params: { locale: string } })
       <section className="bg-white">
         <Container>
           <div className="py-12">
-            <h2 className="text-2xl font-semibold text-brand-navy">{copy.deliverables.headline}</h2>
-            <p className="mt-2 text-sm text-zinc-600">{copy.deliverables.subheadline}</p>
+            <h2 className="text-2xl font-semibold text-brand-navy">{deliverables.headline}</h2>
+            <p className="mt-2 text-sm text-zinc-600">{deliverables.subheadline}</p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-600">
-              {copy.deliverables.bullets.map((item) => (
+              {deliverables.bullets.map((item: string) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            {renderCta(copy.deliverables.cta)}
+            {renderCta(deliverables.cta, "/how-we-work")}
           </div>
         </Container>
       </section>
@@ -123,17 +130,17 @@ export default function UseCasesPage({ params }: { params: { locale: string } })
       <section className="bg-white">
         <Container>
           <div className="py-12">
-            <h2 className="text-2xl font-semibold text-brand-navy">{copy.outcomes.headline}</h2>
-            <p className="mt-2 text-sm text-zinc-600">{copy.outcomes.subheadline}</p>
+            <h2 className="text-2xl font-semibold text-brand-navy">{outcomes.headline}</h2>
+            <p className="mt-2 text-sm text-zinc-600">{outcomes.subheadline}</p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-600">
-              {copy.outcomes.bullets.map((item) => (
+              {outcomes.bullets.map((item: string) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            {renderCta(copy.outcomes.cta)}
+            {renderCta(outcomes.cta, "/contact")}
           </div>
         </Container>
       </section>

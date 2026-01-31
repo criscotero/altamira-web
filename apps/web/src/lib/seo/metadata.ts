@@ -16,6 +16,7 @@ type BuildMetadataArgs = {
   path: string;
   locale?: Locale;
   type?: "website" | "article";
+  siteName: string;
 };
 
 export function buildMetadata({
@@ -24,6 +25,7 @@ export function buildMetadata({
   path,
   locale = defaultLocale,
   type = "website",
+  siteName,
 }: BuildMetadataArgs): Metadata {
   const baseUrl = getSiteUrl();
   const url = `${baseUrl}${path}`;
@@ -35,7 +37,7 @@ export function buildMetadata({
       title,
       description,
       url,
-      siteName: "Altamira Tech Labs",
+      siteName,
       type,
       locale: ogLocaleMap[locale] || ogLocaleMap[defaultLocale],
     },

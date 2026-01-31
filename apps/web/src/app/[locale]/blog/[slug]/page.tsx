@@ -8,8 +8,8 @@ import { PortableText } from "@portabletext/react";
 import { JsonLd } from "@/components/JsonLd";
 import { articleJsonLd } from "@/lib/seo/jsonld";
 import { getSiteUrl } from "@/lib/site";
-import { siteCopy } from "@/content/siteCopy";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { getTranslations } from "next-intl/server";
 
 type Post = {
   title: string;
@@ -29,32 +29,37 @@ export async function generateMetadata({
   params: { locale: string; slug: string };
 }): Promise<Metadata> {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
+  const t = await getTranslations({ locale });
   const post: Post | null = await fetchPost(locale, params.slug);
-  const meta = siteCopy.pages.blog.meta;
 
   if (!post) {
     return buildMetadata({
-      title: meta.title,
-      description: meta.description,
-      path: `/${locale}${siteCopy.links.blog}`,
+      title: t("pages.blog.meta.title"),
+      description: t("pages.blog.meta.description"),
+      path: `/${locale}/blog`,
       locale,
+      siteName: t("brand.name"),
     });
   }
 
   return buildMetadata({
     title: post.title,
-    description: post.excerpt || meta.description,
-    path: `/${locale}${siteCopy.links.blog}/${params.slug}`,
+    description: post.excerpt || t("pages.blog.meta.description"),
+    path: `/${locale}/blog/${params.slug}`,
     locale,
     type: "article",
+    siteName: t("brand.name"),
   });
 }
 
 export default async function BlogPost({ params }: { params: { locale: string; slug: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
+  const t = await getTranslations({ locale, namespace: "pages.blog" });
   const post: Post | null = await fetchPost(locale, params.slug);
-  const template = siteCopy.pages.blog.postTemplate;
-  const ui = siteCopy.pages.blog.ui;
+
+  const template = t.raw("postTemplate") as any;
+  const ui = t.raw("ui") as any;
+  const brand = await getTranslations({ locale, namespace: "brand" });
 
   if (!post) {
     return (
@@ -79,6 +84,7 @@ export default async function BlogPost({ params }: { params: { locale: string; s
             datePublished: post.publishedAt,
             description: post.excerpt,
             authorName: (post as any).author?.name,
+            publisherName: brand("name"),
           })}
         />
 
@@ -93,7 +99,7 @@ export default async function BlogPost({ params }: { params: { locale: string; s
         <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{template.problemLabel}</h2>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-            {template.problemPoints.map((item) => (
+            {template.problemPoints.map((item: string) => (
               <li key={item} className="flex items-start gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                 <span>{item}</span>
@@ -105,7 +111,7 @@ export default async function BlogPost({ params }: { params: { locale: string; s
         <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{template.frameworkLabel}</h2>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-            {template.frameworkPoints.map((item) => (
+            {template.frameworkPoints.map((item: string) => (
               <li key={item} className="flex items-start gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                 <span>{item}</span>
@@ -117,7 +123,7 @@ export default async function BlogPost({ params }: { params: { locale: string; s
         <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{template.examplesLabel}</h2>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-            {template.examplePoints.map((item) => (
+            {template.examplePoints.map((item: string) => (
               <li key={item} className="flex items-start gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                 <span>{item}</span>
@@ -129,7 +135,7 @@ export default async function BlogPost({ params }: { params: { locale: string; s
         <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{template.checklistLabel}</h2>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600">
-            {template.checklistPoints.map((item) => (
+            {template.checklistPoints.map((item: string) => (
               <li key={item} className="flex items-start gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                 <span>{item}</span>
@@ -155,7 +161,7 @@ export default async function BlogPost({ params }: { params: { locale: string; s
         ) : null}
 
         <div className="mt-8">
-          {post.content ? <PortableText value={post.content} /> : <p>Content is empty.</p>}
+          {post.content ? <PortableText value={post.content} /> : <p>{ui.emptyContent}</p>}
         </div>
 
         <section className="not-prose mt-10 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
@@ -164,7 +170,7 @@ export default async function BlogPost({ params }: { params: { locale: string; s
           <div className="mt-4">
             <Link
               className="inline-flex items-center rounded-lg bg-brand-orange px-3 py-2 text-sm font-medium text-white hover:bg-brand-orange2"
-              href={`/${locale}${template.cta.href}`}
+              href={`/${locale}/contact`}
             >
               {template.cta.label}
             </Link>

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getSiteUrl, normalizeLocale } from "@/lib/site";
 import { sanityClient } from "@/lib/sanity/client";
 import { POSTS_BY_LOCALE } from "@/lib/sanity/queries";
+import { createTranslator } from "next-intl";
 
 export const runtime = "nodejs";
 
@@ -19,6 +20,8 @@ function xmlEscape(s: string) {
 export async function GET(_req: Request, ctx: { params: { locale: string } }) {
   const locale = normalizeLocale(ctx.params.locale);
   const baseUrl = getSiteUrl();
+  const messages = (await import(`@/messages/${locale}.json`)).default;
+  const t = createTranslator({ locale, messages });
 
   let posts: Post[] = [];
   try {
@@ -45,7 +48,7 @@ export async function GET(_req: Request, ctx: { params: { locale: string } }) {
     .join("
 ");
 
-  const channelTitle = `Altamira Tech Labs Blog (${locale.toUpperCase()})`;
+  const channelTitle = t("rss.channelTitle", { locale: locale.toUpperCase() });
   const channelLink = `${baseUrl}/${locale}/blog`;
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
@@ -53,7 +56,7 @@ export async function GET(_req: Request, ctx: { params: { locale: string } }) {
   <channel>
     <title>${xmlEscape(channelTitle)}</title>
     <link>${xmlEscape(channelLink)}</link>
-    <description>${xmlEscape("Articles on AI, automation, software engineering and systems.")}</description>
+    <description>${xmlEscape(t("rss.description"))}</description>
     <language>${xmlEscape(locale)}</language>
     ${items}
   </channel>
