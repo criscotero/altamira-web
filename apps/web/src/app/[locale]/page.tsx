@@ -7,8 +7,7 @@ import { isLocale, type Locale, defaultLocale } from "@/lib/i18n/locales";
 
 const primaryCtaClass =
   "inline-flex items-center justify-center rounded-lg bg-brand-orange px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-orange2";
-const secondaryCtaClass =
-  "inline-flex items-center justify-center rounded-lg border border-zinc-300 px-4 py-2 text-sm text-zinc-900 transition-colors hover:bg-zinc-50";
+const secondaryCtaClass = primaryCtaClass;
 
 function isExternalHref(href: string) {
   return href.startsWith("http") || href.startsWith("mailto:");
@@ -35,7 +34,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const copy = siteCopy.pages.home;
 
-  const renderCta = (cta: typeof copy.hero.cta, microcopyClass = "text-zinc-500") => {
+  const renderCta = (cta: typeof copy.hero.cta, microcopyClass = "text-zinc-600") => {
     const className = cta.variant === "primary" ? primaryCtaClass : secondaryCtaClass;
     const href = resolveHref(locale, cta.href);
 
@@ -57,29 +56,29 @@ export default async function Home({ params }: { params: { locale: string } }) {
 
   return (
     <>
-      <section className="bg-[#0B1F33] text-slate-100">
+      <section className="bg-[#0B1F33] text-white">
         <Container>
-          <div className="grid gap-12 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 sm:items-center">
             <div>
               <h1 className="text-3xl font-semibold tracking-tight sm:text-5xl">
                 {copy.hero.headline}
               </h1>
-              <p className="mt-4 max-w-2xl text-base text-slate-200">{copy.hero.subheadline}</p>
-              <ul className="mt-6 space-y-2 text-sm text-slate-200">
+              <p className="mt-4 max-w-2xl text-base text-white/85">{copy.hero.subheadline}</p>
+              <ul className="mt-6 space-y-2 text-sm text-white/85">
                 {copy.hero.bullets.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-orange" />
+                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-white/80" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              {renderCta(copy.hero.cta, "text-slate-300")}
+              {renderCta(copy.hero.cta, "text-white/70")}
             </div>
-            <div className="rounded-xl2 border border-white/10 bg-white/5 p-6">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-300">
+            <div className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-navy">
                 {copy.hero.deliverablesCard.headline}
               </h2>
-              <ul className="mt-4 space-y-3 text-sm text-slate-200">
+              <ul className="mt-4 space-y-3 text-sm text-zinc-600">
                 {copy.hero.deliverablesCard.bullets.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -106,7 +105,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
                 <p className="mt-2 text-sm text-zinc-600">{copy.credibility.subheadline}</p>
                 {renderCta(copy.credibility.cta)}
               </div>
-              <ul className="grid gap-3 text-sm text-zinc-700 sm:grid-cols-2">
+              <ul className="grid gap-3 text-sm text-zinc-600 sm:grid-cols-2">
                 {copy.credibility.bullets.map((item) => (
                   <li key={item} className="rounded-lg border border-zinc-200 bg-zinc-50 p-3">
                     {item}
@@ -124,10 +123,10 @@ export default async function Home({ params }: { params: { locale: string } }) {
             <div>
               <h2 className="text-2xl font-semibold text-brand-navy">{copy.problem.headline}</h2>
               <p className="mt-2 text-sm text-zinc-600">{copy.problem.subheadline}</p>
-              <ul className="mt-6 space-y-2 text-sm text-zinc-700">
+              <ul className="mt-6 space-y-2 text-sm text-zinc-600">
                 {copy.problem.bullets.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -148,7 +147,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
         </Container>
       </section>
 
-      <section className="bg-zinc-50">
+      <section className="bg-white">
         <Container>
           <div className="py-12">
             <div>
@@ -157,7 +156,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {copy.pillars.cards.map((card) => (
-                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-white p-6">
+                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
                   <h3 className="text-sm font-semibold text-brand-navy">{card.title}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{card.description}</p>
                 </div>
@@ -177,14 +176,14 @@ export default async function Home({ params }: { params: { locale: string } }) {
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {copy.servicesHighlights.cards.map((card) => (
-                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-white p-6">
+                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
                   <h3 className="text-sm font-semibold text-brand-navy">{card.title}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{card.description}</p>
                   {card.bullets ? (
                     <ul className="mt-4 space-y-2 text-sm text-zinc-600">
                       {card.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                          <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -198,7 +197,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
         </Container>
       </section>
 
-      <section className="bg-zinc-50">
+      <section className="bg-white">
         <Container>
           <div className="py-12">
             <div>
@@ -207,13 +206,13 @@ export default async function Home({ params }: { params: { locale: string } }) {
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {copy.howItWorks.steps.map((step) => (
-                <div key={step.title} className="rounded-xl2 border border-zinc-200 bg-white p-6">
+                <div key={step.title} className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
                   <h3 className="text-sm font-semibold text-brand-navy">{step.title}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{step.description}</p>
                   <ul className="mt-4 space-y-2 text-sm text-zinc-600">
                     {step.deliverables.map((deliverable) => (
                       <li key={deliverable} className="flex items-start gap-2">
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                         <span>{deliverable}</span>
                       </li>
                     ))}
@@ -235,7 +234,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {copy.useCases.cards.map((card) => (
-                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-white p-6">
+                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
                   <h3 className="text-sm font-semibold text-brand-navy">{card.title}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{card.description}</p>
                 </div>
@@ -246,7 +245,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
         </Container>
       </section>
 
-      <section className="bg-zinc-50">
+      <section className="bg-white">
         <Container>
           <div className="py-12">
             <div>
@@ -255,7 +254,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {copy.whyAltamira.cards.map((card) => (
-                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-white p-6">
+                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
                   <h3 className="text-sm font-semibold text-brand-navy">{card.title}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{card.description}</p>
                 </div>
@@ -275,7 +274,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               {copy.faq.items.map((item) => (
-                <div key={item.question} className="rounded-xl2 border border-zinc-200 bg-white p-6">
+                <div key={item.question} className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
                   <h3 className="text-sm font-semibold text-brand-navy">{item.question}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{item.answer}</p>
                 </div>
@@ -286,24 +285,24 @@ export default async function Home({ params }: { params: { locale: string } }) {
         </Container>
       </section>
 
-      <section className="bg-[#0B1F33] text-slate-100">
+      <section className="bg-[#0B1F33] text-white">
         <Container>
           <div className="grid gap-8 py-14 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             <div>
               <h2 className="text-2xl font-semibold">{copy.closingCta.headline}</h2>
-              <p className="mt-2 text-sm text-slate-200">{copy.closingCta.subheadline}</p>
-              <ul className="mt-6 space-y-2 text-sm text-slate-200">
+              <p className="mt-2 text-sm text-white/85">{copy.closingCta.subheadline}</p>
+              <ul className="mt-6 space-y-2 text-sm text-white/85">
                 {copy.closingCta.bullets.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-white/80" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              {renderCta(copy.closingCta.cta, "text-slate-300")}
+              {renderCta(copy.closingCta.cta, "text-white/70")}
             </div>
-            <div className="rounded-xl2 border border-white/10 bg-white/5 p-6 text-sm text-slate-200">
-              <div className="text-sm font-semibold text-slate-100">
+            <div className="rounded-xl2 border border-white/10 bg-white/5 p-6 text-sm text-white/85">
+              <div className="text-sm font-semibold text-white">
                 {copy.closingCta.positioningCard.headline}
               </div>
               <p className="mt-3">{copy.closingCta.positioningCard.description}</p>

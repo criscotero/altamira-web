@@ -25,12 +25,12 @@ export default async function BlogIndex({ params }: { params: { locale: string }
       <div className="py-12">
         <h1 className="text-3xl font-semibold tracking-tight text-brand-navy">{copy.pageTitle}</h1>
         <p className="mt-3 max-w-2xl text-sm text-zinc-600">{copy.indexIntro.subheadline}</p>
-        <div className="mt-6 rounded-xl2 border border-zinc-200 bg-white p-6">
+        <div className="mt-6 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{copy.indexIntro.headline}</h2>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600">
             {copy.indexIntro.bullets.map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                 <span>{item}</span>
               </li>
             ))}
@@ -38,11 +38,11 @@ export default async function BlogIndex({ params }: { params: { locale: string }
           <div className="mt-6">
             <Link
               href={`/${locale}${siteCopy.links.contact}`}
-              className="inline-flex items-center rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 hover:bg-zinc-50"
+              className="inline-flex items-center rounded-lg bg-brand-orange px-3 py-2 text-sm font-medium text-white hover:bg-brand-orange2"
             >
               {copy.indexIntro.cta.label}
             </Link>
-            <p className="mt-2 text-xs text-zinc-500">{copy.indexIntro.cta.microcopy}</p>
+            <p className="mt-2 text-xs text-zinc-600">{copy.indexIntro.cta.microcopy}</p>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ export default async function BlogIndex({ params }: { params: { locale: string }
 
         <div className="mt-10 grid gap-6">
           {posts.length === 0 ? (
-            <div className="rounded-xl border border-zinc-200 bg-white p-6 text-sm text-zinc-600">
+            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 text-sm text-zinc-600">
               {copy.ui.emptyState}
             </div>
           ) : (
@@ -67,7 +67,7 @@ export default async function BlogIndex({ params }: { params: { locale: string }
               <Link
                 key={p._id}
                 href={`/${locale}/blog/${p.slug.current}`}
-                className="rounded-xl2 border border-zinc-200 bg-white p-6 hover:bg-zinc-50"
+                className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6 hover:bg-white"
               >
                 <div className="text-lg font-semibold">{p.title}</div>
                 {p.excerpt ? <p className="mt-2 text-sm text-zinc-600">{p.excerpt}</p> : null}

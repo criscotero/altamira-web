@@ -25,10 +25,10 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
       <div className="py-12">
         <h1 className="text-3xl font-semibold tracking-tight text-brand-navy">{copy.pageTitle}</h1>
         <p className="mt-3 max-w-2xl text-sm text-zinc-600">{copy.intro.subheadline}</p>
-        <ul className="mt-6 space-y-2 text-sm text-zinc-700">
+        <ul className="mt-6 space-y-2 text-sm text-zinc-600">
           {copy.intro.bullets.map((item) => (
             <li key={item} className="flex items-start gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
               <span>{item}</span>
             </li>
           ))}
@@ -40,11 +40,7 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
           submitMicrocopy={copy.intro.cta.microcopy}
         />
 
-        <div className="mt-10 text-xs text-zinc-500">
-          <p>
-            <strong>Setup:</strong> Add RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL in Vercel env.
-          </p>
-        </div>
+        
       </div>
     </Container>
   );

@@ -85,53 +85,53 @@ export default async function BlogPost({ params }: { params: { locale: string; s
         <h1>{post.title}</h1>
         {post.excerpt ? <p className="text-zinc-600">{post.excerpt}</p> : null}
 
-        <section className="not-prose mt-8 rounded-xl2 border border-zinc-200 bg-white p-6">
+        <section className="not-prose mt-8 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{template.hookLabel}</h2>
           <p className="mt-2 text-sm text-zinc-600">{post.excerpt || template.hookFallback}</p>
         </section>
 
-        <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-white p-6">
+        <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{template.problemLabel}</h2>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600">
             {template.problemPoints.map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-white p-6">
+        <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{template.frameworkLabel}</h2>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600">
             {template.frameworkPoints.map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-white p-6">
+        <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{template.examplesLabel}</h2>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600">
             {template.examplePoints.map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-white p-6">
+        <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{template.checklistLabel}</h2>
           <ul className="mt-4 space-y-2 text-sm text-zinc-600">
             {template.checklistPoints.map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                 <span>{item}</span>
               </li>
             ))}
@@ -158,7 +158,7 @@ export default async function BlogPost({ params }: { params: { locale: string; s
           {post.content ? <PortableText value={post.content} /> : <p>Content is empty.</p>}
         </div>
 
-        <section className="not-prose mt-10 rounded-xl2 border border-zinc-200 bg-white p-6">
+        <section className="not-prose mt-10 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{ui.continueTitle}</h2>
           <p className="mt-2 text-sm text-zinc-600">{template.cta.microcopy}</p>
           <div className="mt-4">
@@ -171,7 +171,7 @@ export default async function BlogPost({ params }: { params: { locale: string; s
           </div>
         </section>
 
-        <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-white p-6">
+        <section className="not-prose mt-6 rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
           <h2 className="text-sm font-semibold text-brand-navy">{ui.authorTitle}</h2>
           <p className="mt-2 text-sm text-zinc-600">{template.authorBio}</p>
         </section>

@@ -56,6 +56,8 @@ export type Meta = {
   description: string;
 };
 
+const BOOK_CALL_URL = "https://calendly.com/altamiratechlabs/tintro-call-altamira-tech-labs";
+
 export const siteCopy = {
   brand: {
     name: "Altamira Tech Labs",
@@ -72,6 +74,7 @@ export const siteCopy = {
     useCases: "/use-cases",
     blog: "/blog",
     contact: "/contact",
+    bookCall: BOOK_CALL_URL,
   },
   pages: {
     home: {
@@ -101,7 +104,7 @@ export const siteCopy = {
         },
         cta: {
           label: "Book a call",
-          href: "/contact",
+          href: BOOK_CALL_URL,
           microcopy: "Tell us about your operations and the outcomes you need.",
           variant: "primary",
         },
@@ -383,7 +386,7 @@ export const siteCopy = {
         },
         cta: {
           label: "Book a call",
-          href: "/contact",
+          href: BOOK_CALL_URL,
           microcopy: "We reply within two business days.",
           variant: "primary",
         },
@@ -531,7 +534,7 @@ export const siteCopy = {
         ],
         cta: {
           label: "Book a call",
-          href: "/contact",
+          href: BOOK_CALL_URL,
           microcopy: "We will scope the right engagement model for your team.",
           variant: "primary",
         },

@@ -7,8 +7,7 @@ import { isLocale, type Locale, defaultLocale } from "@/lib/i18n/locales";
 
 const primaryCtaClass =
   "inline-flex items-center justify-center rounded-lg bg-brand-orange px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-orange2";
-const secondaryCtaClass =
-  "inline-flex items-center justify-center rounded-lg border border-zinc-300 px-4 py-2 text-sm text-zinc-900 transition-colors hover:bg-zinc-50";
+const secondaryCtaClass = primaryCtaClass;
 
 function isExternalHref(href: string) {
   return href.startsWith("http") || href.startsWith("mailto:");
@@ -50,7 +49,7 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
             {cta.label}
           </Link>
         )}
-        <span className="text-xs text-zinc-500">{cta.microcopy}</span>
+        <span className="text-xs text-zinc-600">{cta.microcopy}</span>
       </div>
     );
   };
@@ -60,16 +59,16 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
       <section className="bg-white">
         <Container>
           <div className="py-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">{copy.pageLabel}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-600">{copy.pageLabel}</p>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-brand-navy">
               {copy.mission.headline}
             </h1>
             <p className="mt-2 text-sm text-zinc-600">{copy.mission.subheadline}</p>
             <p className="mt-3 max-w-2xl text-sm text-zinc-600">{siteCopy.brand.shortDescription}</p>
-            <ul className="mt-6 space-y-2 text-sm text-zinc-700">
+            <ul className="mt-6 space-y-2 text-sm text-zinc-600">
               {copy.mission.bullets.map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -79,15 +78,15 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
         </Container>
       </section>
 
-      <section className="bg-zinc-50">
+      <section className="bg-white">
         <Container>
           <div className="py-12">
             <h2 className="text-2xl font-semibold text-brand-navy">{copy.origin.headline}</h2>
             <p className="mt-2 text-sm text-zinc-600">{copy.origin.subheadline}</p>
-            <ul className="mt-6 space-y-2 text-sm text-zinc-700">
+            <ul className="mt-6 space-y-2 text-sm text-zinc-600">
               {copy.origin.bullets.map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -104,7 +103,7 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
             <p className="mt-2 text-sm text-zinc-600">{copy.principles.subheadline}</p>
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {copy.principles.cards.map((card) => (
-                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-white p-6">
+                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
                   <h3 className="text-sm font-semibold text-brand-navy">{card.title}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{card.description}</p>
                 </div>
@@ -115,14 +114,14 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
         </Container>
       </section>
 
-      <section className="bg-zinc-50">
+      <section className="bg-white">
         <Container>
           <div className="py-12">
             <h2 className="text-2xl font-semibold text-brand-navy">{copy.delivery.headline}</h2>
             <p className="mt-2 text-sm text-zinc-600">{copy.delivery.subheadline}</p>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {copy.delivery.cards.map((card) => (
-                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-white p-6">
+                <div key={card.title} className="rounded-xl2 border border-zinc-200 bg-zinc-50 p-6">
                   <h3 className="text-sm font-semibold text-brand-navy">{card.title}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{card.description}</p>
                 </div>
@@ -138,10 +137,10 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
           <div className="py-12">
             <h2 className="text-2xl font-semibold text-brand-navy">{copy.ownership.headline}</h2>
             <p className="mt-2 text-sm text-zinc-600">{copy.ownership.subheadline}</p>
-            <ul className="mt-6 space-y-2 text-sm text-zinc-700">
+            <ul className="mt-6 space-y-2 text-sm text-zinc-600">
               {copy.ownership.bullets.map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -151,15 +150,15 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
         </Container>
       </section>
 
-      <section className="bg-zinc-50">
+      <section className="bg-white">
         <Container>
           <div className="py-12">
             <h2 className="text-2xl font-semibold text-brand-navy">{copy.founder.headline}</h2>
             <p className="mt-2 text-sm text-zinc-600">{copy.founder.subheadline}</p>
-            <ul className="mt-6 space-y-2 text-sm text-zinc-700">
+            <ul className="mt-6 space-y-2 text-sm text-zinc-600">
               {copy.founder.bullets.map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-orange" />
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-navy" />
                   <span>{item}</span>
                 </li>
               ))}
