@@ -15,7 +15,7 @@ export function Navbar({ locale }: { locale: Locale }) {
   return (
     <header className="border-b border-white/10 bg-[#0B1F33] text-white">
       <Container>
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex min-h-16 items-center justify-between">
           <Link href={`/${locale}`} className="flex items-center gap-3">
             <Image
               src="/brand/profile-logo.jpg"
@@ -47,7 +47,7 @@ export function Navbar({ locale }: { locale: Locale }) {
               href={BOOK_CALL_URL}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex h-10 items-center justify-center rounded-lg bg-brand-orange px-4 text-center text-sm font-medium text-white hover:bg-brand-orange2"
+              className="inline-flex min-h-10 max-w-[8.5rem] items-center justify-center rounded-lg bg-brand-orange px-3 py-2 text-center text-xs font-medium leading-tight text-white hover:bg-brand-orange2 whitespace-normal break-words sm:h-10 sm:max-w-none sm:px-4 sm:py-0 sm:text-sm sm:leading-normal"
             >
               {cta("bookCall")}
             </a>
